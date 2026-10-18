@@ -476,11 +476,59 @@
 
         .swagger-ui .opblock .opblock-summary {
             padding: 10px 16px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
             border-bottom: 1px solid transparent !important;
+            cursor: pointer !important;
         }
 
         .swagger-ui .opblock.is-open .opblock-summary {
             border-bottom-color: var(--border) !important;
+        }
+
+        /* Clean Right Controls: Hide redundant misplaced copy button in summary row */
+        .swagger-ui .opblock-summary .copy-to-clipboard {
+            display: none !important;
+        }
+
+        .swagger-ui .opblock-summary-control {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            flex: 1 !important;
+            border: none !important;
+            background: transparent !important;
+            padding: 0 !important;
+            cursor: pointer !important;
+        }
+
+        .swagger-ui .opblock-control-arrow {
+            background: transparent !important;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            margin: 0 0 0 12px !important;
+            cursor: pointer !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .swagger-ui .opblock-control-arrow svg {
+            width: 18px !important;
+            height: 18px !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .swagger-ui .opblock-control-arrow svg path {
+            fill: #94a3b8 !important;
+            transition: fill 0.15s ease !important;
+        }
+
+        .swagger-ui .opblock:hover .opblock-control-arrow svg path {
+            fill: var(--cyan) !important;
         }
 
         .swagger-ui .opblock-body {
@@ -769,11 +817,16 @@
             padding: 12px !important;
         }
 
-        .swagger-ui .copy-to-clipboard button {
-            background: rgba(255, 255, 255, 0.12) !important;
+        .swagger-ui .curl-command .copy-to-clipboard,
+        .swagger-ui .highlight-code .copy-to-clipboard {
+            background: rgba(255, 255, 255, 0.1) !important;
             border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            border-radius: 4px !important;
-            padding: 4px 8px !important;
+            border-radius: 6px !important;
+        }
+
+        .swagger-ui .curl-command .copy-to-clipboard button,
+        .swagger-ui .highlight-code .copy-to-clipboard button {
+            background-color: #cbd5e1 !important;
         }
 
         /* Validator badge removal */
