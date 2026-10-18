@@ -1,0 +1,15 @@
+.git
+.github
+tests
+scratch
+.dockerignore
+Dockerfile
+docker-compose.yml
+docker
+.phpunit.result.cache
+node_modules
+storage/logs/*
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/app/exports/*

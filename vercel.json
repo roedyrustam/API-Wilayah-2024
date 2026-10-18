@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "framework": null,
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.7.2",
+      "memory": 1024,
+      "maxDuration": 15
+    }
+  },
+  "routes": [
+    {
+      "src": "/(css|js|json|sdk|docs|images|favicon.ico|robots.txt)(.*)",
+      "dest": "/public/$1$2"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ],
+  "env": {
+    "APP_ENV": "production",
+    "APP_DEBUG": "false",
+    "LARAVEL_STORAGE_PATH": "/tmp/storage",
+    "VIEW_COMPILED_PATH": "/tmp/storage/framework/views",
+    "CACHE_DRIVER": "array",
+    "LOG_CHANNEL": "stderr",
+    "SESSION_DRIVER": "cookie"
+  }
+}
