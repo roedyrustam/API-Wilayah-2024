@@ -3,6 +3,7 @@
 [![Laravel Version](https://img.shields.io/badge/Laravel-10.x-red.svg)](https://laravel.com)
 [![Filament Version](https://img.shields.io/badge/Filament-3.0-orange.svg)](https://filamentphp.com)
 [![Kemendagri Standard](https://img.shields.io/badge/Standard-Kemendagri%202026-blue.svg)](https://kemendagri.go.id)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live%20Production-black.svg?logo=vercel)](https://apiwilayah2026.vercel.app)
 [![OpenAPI Specification](https://img.shields.io/badge/OpenAPI-3.0.3-brightgreen.svg)](https://apiwilayah2026.vercel.app/api/documentation)
 [![Author: Roedy Rustam](https://img.shields.io/badge/Author-Roedy%20Rustam-blue.svg)](https://github.com/roedyrustam)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-roedyrustam%2FAPI--Wilayah--2024-181717.svg?logo=github)](https://github.com/roedyrustam/API-Wilayah-2024)
@@ -105,10 +106,14 @@
 | `GET` | `/api/v1/kecamatan/{id}/kelurahan` | Kelurahan/Desa di kecamatan tertentu | `search`, `pos_code`, `paginate` |
 | `GET` | `/api/v1/kelurahan` | Daftar seluruh kelurahan/desa | `kecamatan_id`, `search`, `pos_code`, `page` |
 | `GET` | `/api/v1/kelurahan/{id}` | Detail kelurahan/desa lengkap hierarki | - |
+| `GET` | `/api/v1/kodepos/{code}` | **Lookup 5-Digit Kode Pos** (mengembalikan hierarki lengkap instan) | - |
+| `GET` | `/api/v1/kodepos` | **Pencarian Kode Pos** & Autocomplete | `search`, `pos_code`, `limit` |
+| `GET` | `/api/v1/cascader/provinsi/{id}` | **Single-Trip Cascader** Provinsi -> Kab/Kota -> Kecamatan (1 Network Call) | - |
+| `GET` | `/api/v1/cascader/kabupaten/{id}` | **Single-Trip Cascader** Kab/Kota -> Kecamatan -> Kelurahan (1 Network Call) | - |
 | `GET` | `/api/v1/search` | **Autocomplete Global** (cari simultan 4 level wilayah) | `q` (minimal 2 karakter) |
 | `GET` | `/api/v1/nearby` | **Pencarian Proximity / Radius (GIS)** via Haversine | `lat`, `lng`, `radius` (km), `level`, `limit` |
 | `GET` | `/api/v1/geojson/provinsi` | **GeoJSON RFC 7946** seluruh provinsi untuk Leaflet/Mapbox | `search`, `code` |
-| `GET` | `/api/v1/geojson/kabupaten` | **GeoJSON RFC 7946** seluruh kabupaten/kota | `provinsi_id`, `search` |
+| `GET` | `/api/v1/geojson/kabupaten` | **GeoJSON RFC 7946** seluruh 514 kabupaten/kota (+ koordinat) | `provinsi_id`, `search` |
 | `GET` | `/api/v1/export/{level}` | **Ekspor Master Data (Stream)** format CSV / JSON | `format` (`csv` / `json`) |
 
 *Catatan:*
