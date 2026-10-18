@@ -1,5 +1,9 @@
 /**
  * TypeScript Type Definitions for API Wilayah Indonesia 2026 Client SDK
+ * 
+ * @author Roedy Rustam <roedyrustam@gmail.com>
+ * @repository https://github.com/roedyrustam/API-Wilayah-2024
+ * @license MIT
  */
 
 export interface ClientOptions {

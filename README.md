@@ -3,7 +3,9 @@
 [![Laravel Version](https://img.shields.io/badge/Laravel-10.x-red.svg)](https://laravel.com)
 [![Filament Version](https://img.shields.io/badge/Filament-3.0-orange.svg)](https://filamentphp.com)
 [![Kemendagri Standard](https://img.shields.io/badge/Standard-Kemendagri%202026-blue.svg)](https://kemendagri.go.id)
-[![OpenAPI Specification](https://img.shields.io/badge/OpenAPI-3.1-brightgreen.svg)](/api/documentation)
+[![OpenAPI Specification](https://img.shields.io/badge/OpenAPI-3.0.3-brightgreen.svg)](https://apiwilayah2026.vercel.app/api/documentation)
+[![Author: Roedy Rustam](https://img.shields.io/badge/Author-Roedy%20Rustam-blue.svg)](https://github.com/roedyrustam)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-roedyrustam%2FAPI--Wilayah--2024-181717.svg?logo=github)](https://github.com/roedyrustam/API-Wilayah-2024)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 **API Wilayah Indonesia 2026** adalah proyek open-source berbasis **Laravel 10** dan **Filament 3 (TALL Stack)** yang menyediakan master data dan RESTful API wilayah administratif terlengkap di Republik Indonesia. Data telah dimutakhirkan sesuai dengan regulasi resmi Kementerian Dalam Negeri (Kemendagri) 2024–2026.
@@ -261,7 +263,17 @@ php artisan make:filament-user
 
 ---
 
+## 👨‍💻 Author & Pengembang
+
+- **Roedy Rustam**
+  - GitHub: [@roedyrustam](https://github.com/roedyrustam)
+  - Repository: [roedyrustam/API-Wilayah-2024](https://github.com/roedyrustam/API-Wilayah-2024)
+  - Live Demo: [https://apiwilayah2026.vercel.app](https://apiwilayah2026.vercel.app)
+  - OpenAPI Spec: [https://apiwilayah2026.vercel.app/api/documentation](https://apiwilayah2026.vercel.app/api/documentation)
+
+---
+
 ## 📄 Lisensi
 
-Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+Proyek ini dilisensikan di bawah [MIT License](LICENSE) &copy; 2024&ndash;2026 **Roedy Rustam**.
 

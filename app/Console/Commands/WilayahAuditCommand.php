@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * API Wilayah Indonesia 2026 - Kemendagri Standard
+ * 
+ * @author Roedy Rustam <roedyrustam@gmail.com>
+ * @repository https://github.com/roedyrustam/API-Wilayah-2024
+ * @license MIT
+ */
+
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;

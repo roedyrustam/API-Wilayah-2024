@@ -8,8 +8,12 @@ info:
     514 Kabupaten/Kota, 7.277 Kecamatan, dan 83.763 Kelurahan/Desa beserta kode pos.
   version: 2.0.0
   contact:
-    name: Roedy Rustam
-    url: https://github.com/roedyrustam
+    name: "Roedy Rustam"
+    email: "roedyrustam@gmail.com"
+    url: "https://github.com/roedyrustam/API-Wilayah-2024"
+  license:
+    name: "MIT"
+    url: "https://github.com/roedyrustam/API-Wilayah-2024/blob/main/LICENSE"
 servers:
   - url: http://127.0.0.1:8000/api
     description: "Local Development Server"

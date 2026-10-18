@@ -2,8 +2,12 @@
 
 /**
  * ==============================================================================
- * API-Wilayah-2026 - Vercel Serverless Function Bridge
+ * API Wilayah Indonesia 2026 - Vercel Serverless Function Bridge
  * Adapts Laravel 10 for Vercel's Serverless PHP Runtime (AWS Lambda)
+ * 
+ * @author Roedy Rustam <roedyrustam@gmail.com>
+ * @repository https://github.com/roedyrustam/API-Wilayah-2024
+ * @license MIT
  * ==============================================================================
  */
 

@@ -2,6 +2,10 @@
  * API Wilayah Indonesia 2026 - ES Module Client SDK
  * Kemendagri 2026 Compliant (38 Provinsi, 514 Kab/Kota, 7.277 Kec, 83.763 Kel)
  * 
+ * @author Roedy Rustam <roedyrustam@gmail.com>
+ * @repository https://github.com/roedyrustam/API-Wilayah-2024
+ * @license MIT
+ * 
  * Usage:
  *   import { WilayahClient } from '/sdk/api-wilayah.esm.js';
  *   const api = new WilayahClient();

@@ -4,6 +4,10 @@
  * 
  * Works in: Browser (<script>), Node.js (require/import), Bundlers (Webpack, Vite, Rollup)
  * Zero dependencies. Built-in Client Caching & GeoJSON Support.
+ * 
+ * @author Roedy Rustam <roedyrustam@gmail.com>
+ * @repository https://github.com/roedyrustam/API-Wilayah-2024
+ * @license MIT
  */
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {

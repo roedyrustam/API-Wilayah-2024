@@ -6,7 +6,12 @@
         "version": "2.0.0",
         "contact": {
             "name": "Roedy Rustam",
-            "url": "https://github.com/roedyrustam"
+            "email": "roedyrustam@gmail.com",
+            "url": "https://github.com/roedyrustam/API-Wilayah-2024"
+        },
+        "license": {
+            "name": "MIT",
+            "url": "https://github.com/roedyrustam/API-Wilayah-2024/blob/main/LICENSE"
         }
     },
     "servers": [
