@@ -38,11 +38,21 @@ $_ENV['VIEW_COMPILED_PATH'] = "{$storagePath}/framework/views";
 $_SERVER['LARAVEL_STORAGE_PATH'] = $storagePath;
 $_SERVER['VIEW_COMPILED_PATH'] = "{$storagePath}/framework/views";
 
-// 3. Optional: Copy local sqlite database to /tmp if it exists
+// 3. Setup SQLite database in /tmp if external database is not configured
 $sqliteSource = dirname(__DIR__) . '/database/database.sqlite';
 $sqliteTarget = '/tmp/database.sqlite';
 if (file_exists($sqliteSource) && !file_exists($sqliteTarget)) {
     @copy($sqliteSource, $sqliteTarget);
+}
+
+$dbConnection = getenv('DB_CONNECTION') ?: ($_ENV['DB_CONNECTION'] ?? null);
+if (!$dbConnection || $dbConnection === 'sqlite') {
+    putenv('DB_CONNECTION=sqlite');
+    putenv("DB_DATABASE={$sqliteTarget}");
+    $_ENV['DB_CONNECTION'] = 'sqlite';
+    $_ENV['DB_DATABASE'] = $sqliteTarget;
+    $_SERVER['DB_CONNECTION'] = 'sqlite';
+    $_SERVER['DB_DATABASE'] = $sqliteTarget;
 }
 
 // 4. Normalize SCRIPT_NAME and SCRIPT_FILENAME so Symfony's Request doesn't strip '/api' prefix from URLs
