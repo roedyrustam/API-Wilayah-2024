@@ -1403,6 +1403,118 @@
                 .then(() => alert('GeoJSON RFC 7946 berhasil disalin ke clipboard!'))
                 .catch(err => alert('Gagal menyalin: ' + err.message));
         }
+
+        // TAB 6: Kode Pos & Cascader Explorer
+        let currentCascaderJson = null;
+
+        function quickPostal(code) {
+            document.getElementById('demo-pos-input').value = code;
+            lookupKodePos();
+        }
+
+        async function lookupKodePos() {
+            const input = document.getElementById('demo-pos-input');
+            const code = (input.value || '').trim();
+            const container = document.getElementById('postal-result-container');
+
+            if (!code || code.length < 3) {
+                container.innerHTML = '<p style="color:var(--amber); font-size:13px;">Masukkan minimal 3 digit kode pos.</p>';
+                return;
+            }
+
+            container.innerHTML = '<div style="text-align:center; padding:20px;"><span class="spinner"></span></div>';
+            try {
+                const res = await fetch(`/api/v1/kodepos/${encodeURIComponent(code)}`);
+                const json = await res.json();
+
+                if (!json.status || !json.data) {
+                    container.innerHTML = `<div style="padding:14px; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:8px; font-size:13px; color:#f87171;">
+                        Kode pos <strong>${code}</strong> tidak ditemukan.
+                    </div>`;
+                    return;
+                }
+
+                const d = json.data;
+                let html = `
+                    <div style="background:rgba(15,23,42,0.8); border:1px solid rgba(16,185,129,0.3); border-radius:10px; padding:16px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+                            <span style="font-size:14px; font-weight:700; color:#34d399;">Kode Pos: ${d.pos_code}</span>
+                            <span class="badge" style="background:rgba(16,185,129,0.2); color:#34d399;">${d.total_villages} Desa/Kelurahan</span>
+                        </div>
+                `;
+
+                d.villages.forEach(v => {
+                    html += `
+                        <div style="padding:10px; background:rgba(255,255,255,0.03); border-radius:6px; margin-bottom:8px;">
+                            <div style="font-weight:600; font-size:14px; color:#ffffff;">Kel. ${v.kelurahan}</div>
+                            <div style="font-size:12.5px; color:var(--text-muted); margin-top:2px;">
+                                Kec. ${v.kecamatan ? v.kecamatan.name : '-'} &bull; 
+                                ${v.kabupaten ? `${v.kabupaten.type} ${v.kabupaten.name}` : '-'} &bull; 
+                                Prov. ${v.provinsi ? v.provinsi.name : '-'} 
+                                <span class="badge-tz" style="margin-left:6px;">${v.provinsi ? v.provinsi.timezone : 'WIB'}</span>
+                            </div>
+                            <div style="font-size:11px; font-family:var(--font-mono); color:var(--cyan); margin-top:4px;">
+                                Kemendagri Code: ${v.full_code}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                html += '</div>';
+                container.innerHTML = html;
+            } catch (err) {
+                container.innerHTML = `<p style="color:#f87171; font-size:13px;">Error: ${err.message}</p>`;
+            }
+        }
+
+        async function loadCascaderTree() {
+            const sel = document.getElementById('cascader-prov-id');
+            const provId = sel.value;
+            const output = document.getElementById('cascader-output');
+            const bench = document.getElementById('cascader-benchmark');
+
+            if (!provId) {
+                alert('Pilih salah satu provinsi terlebih dahulu.');
+                return;
+            }
+
+            output.innerText = '// Mengambil pohon hierarki bersarang...';
+            bench.style.display = 'none';
+
+            const start = performance.now();
+            try {
+                const res = await fetch(`/api/v1/cascader/provinsi/${encodeURIComponent(provId)}`);
+                const json = await res.json();
+                const duration = Math.round(performance.now() - start);
+
+                currentCascaderJson = json;
+                if (json.status && json.data) {
+                    const totalKab = json.data.total_kab;
+                    let totalKec = 0;
+                    json.data.kabupatens.forEach(k => {
+                        totalKec += (k.kecamatans ? k.kecamatans.length : 0);
+                    });
+
+                    bench.style.display = 'block';
+                    bench.innerHTML = `&check; Selesai dalam <strong>${duration} ms</strong> (1 request jaringan tunggal: 1 Provinsi, ${totalKab} Kab/Kota, ${totalKec} Kecamatan)`;
+                    output.innerText = JSON.stringify(json.data, null, 2);
+                } else {
+                    output.innerText = JSON.stringify(json, null, 2);
+                }
+            } catch (err) {
+                output.innerText = '// Error: ' + err.message;
+            }
+        }
+
+        function copyCascaderJson() {
+            if (!currentCascaderJson) {
+                alert('Silakan muat hierarki cascader terlebih dahulu.');
+                return;
+            }
+            navigator.clipboard.writeText(JSON.stringify(currentCascaderJson, null, 2))
+                .then(() => alert('Hierarki Cascader JSON berhasil disalin!'))
+                .catch(err => alert('Gagal menyalin: ' + err.message));
+        }
     </script>
 </body>
 </html>
