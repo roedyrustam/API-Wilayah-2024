@@ -1,46 +1,46 @@
 # Product Requirements Document (PRD)
 **Project**: API Wilayah Indonesia 2026  
-**Version**: 2.5.0  
-**Status**: Approved & Deployed  
+**Version**: 3.0.0  
+**Status**: Approved & Released  
 **Created**: 2026-10-18  
 **Last Updated**: 2026-10-18  
 
 ---
 
 ## 1. Executive Summary
-API Wilayah Indonesia 2026 adalah platform open-source berbasis Laravel 10 dan Filament 3 yang menyediakan master data wilayah administratif Republik Indonesia (Provinsi, Kabupaten/Kota, Kecamatan, dan Kelurahan/Desa) termutakhir sesuai standar regulasi Kementerian Dalam Negeri 2024–2026. Platform ini menyediakan RESTful API berkinerja tinggi dengan query caching (sub-5ms), pencarian geospatial proximity (Haversine radius), kalkulasi zona waktu otomatis (WIB/WITA/WIT), CLI Artisan commands, serta interactive developer playground di `/demo`.
+API Wilayah Indonesia 2026 adalah platform open-source berbasis Laravel 10 dan Filament 3 yang menyediakan master data wilayah administratif Republik Indonesia (Provinsi, Kabupaten/Kota, Kecamatan, dan Kelurahan/Desa) termutakhir sesuai standar regulasi Kementerian Dalam Negeri 2024–2026. Platform ini menyediakan RESTful API berkinerja tinggi dengan query caching (sub-5ms), pencarian geospatial proximity (Haversine radius), standar GeoJSON RFC 7946 untuk visualisasi peta, streaming ekspor CSV/JSON, reusable Blade component `<x-wilayah-cascade />`, CLI Artisan commands, interactive developer playground di `/demo`, serta suite pengujian automated PHPUnit lengkap.
 
 ## 2. Problem Statement
 - **Inkonsistensi Kode DOB**: Daerah Otonom Baru (DOB) Papua Barat Daya sebelumnya tercatat menggunakan kode duplikat `92` (Papua Barat), padahal kode resmi Kemendagri adalah `96`, mengakibatkan rusaknya integritas hierarki data kabupaten, kecamatan, dan kelurahan.
 - **Ketiadaan REST API Publik**: Endpoint API publik belum terdefinisi di `routes/api.php`, menyulitkan pengembang pihak ketiga untuk mengonsumsi data secara programmatic.
-- **Ketiadaan Fitur Geospasial**: Pengembang aplikasi logistik dan e-commerce kesulitan mencari wilayah administratif terdekat dari titik GPS pengguna.
-- **Ketiadaan Playground Terintegrasi**: Developer kesulitan menguji cascading dropdown dan pencarian autocomplete tanpa setup frontend mandiri.
+- **Ketiadaan Fitur Geospasial & Peta**: Pengembang aplikasi logistik, e-commerce, dan GIS kesulitan mengintegrasikan titik koordinat atau memetakan wilayah ke Leaflet / Mapbox.
+- **Ketiadaan Komponen UI Siap Pakai**: Developer kesulitan membuat cascading dropdown 4 tingkat secara manual berulang-ulang di setiap proyek.
 
 ## 3. Goals & Success Metrics
 | Goal | Metric | Target |
 |---|---|---|
 | Pemutakhiran Kode 2026 | Integritas Kode Wilayah Papua Barat Daya | 100% tersinkronisasi ke prefix `96` (6 Kab/Kota, 132 Kec, 1.013 Kel) |
-| Ketersediaan REST API | Cakupan Endpoint Wilayah | 100% endpoint CRUD read-only (List, Detail, Filter Relasi, Nearby) |
+| Ketersediaan REST API | Cakupan Endpoint Wilayah | 100% endpoint CRUD read-only (List, Detail, Filter Relasi, Nearby, GeoJSON, Export) |
 | Latensi API Caching | Waktu Respons HTTP | Sub-5ms untuk cached query, sub-50ms untuk uncached |
-| Fitur Geospatial | Proximity Radius Lookup | Kemampuan pencarian radius km akurat berbasis Haversine formula |
-| Integritas Relasi DB | Zero-Orphan Records | 0 kabupaten, kecamatan, atau kelurahan tanpa parent |
-| Dokumentasi & Demo | Interaktivitas Developer | Swagger UI di `/api/documentation` dan Playground di `/demo` |
+| Fitur Geospatial & GeoJSON | Standar RFC 7946 & Radius Lookup | Format GeoJSON valid dan pencarian radius km akurat via Haversine |
+| Automated Testing | Kesiapan CI Pipeline | 100% lolos pengujian PHPUnit (`php artisan test`) |
+| Dokumentasi & Demo | Interaktivitas Developer | Swagger UI di `/api/documentation`, Playground di `/demo`, dan `<x-wilayah-cascade />` |
 
 ## 4. User Personas
 ### Persona 1: Backend / Fullstack Developer
 - **Role**: Software Engineer membangun aplikasi e-commerce, logistik, atau fintech di Indonesia.
-- **Goals**: Membutuhkan dropdown wilayah bertingkat (Provinsi -> Kab -> Kec -> Kel -> Kode Pos) yang akurat dan responsif via REST API serta pencarian nearby GPS.
+- **Goals**: Membutuhkan dropdown wilayah bertingkat (Provinsi -> Kab -> Kec -> Kel -> Kode Pos) yang akurat dan responsif via REST API atau Blade component `<x-wilayah-cascade />`.
 
-### Persona 2: Mobile App Developer
-- **Role**: iOS / Android / Flutter Engineer.
-- **Goals**: Mengirim koordinat GPS pengguna (`lat`, `lng`) dan langsung mendapatkan wilayah administrasi terdekat beserta zona waktu (WIB/WITA/WIT).
+### Persona 2: Frontend & GIS Engineer
+- **Role**: Pengembang Web GIS / Mobile App.
+- **Goals**: Mengonsumsi GeoJSON FeatureCollection (`/api/v1/geojson/provinsi`) untuk visualisasi peta Leaflet/Mapbox dan radius pencarian terdekat (`/api/v1/nearby`).
 
 ### Persona 3: Data Administrator & Operator
 - **Role**: Operator Sistem / Pegawai Pemerintahan.
-- **Goals**: Mengelola, memverifikasi, dan mengekspor master data wilayah melalui Filament Admin Dashboard dan CLI commands.
+- **Goals**: Mengelola, memverifikasi, dan mengekspor master data wilayah melalui Filament Admin Dashboard dan CLI commands (`php artisan wilayah:status` dan `php artisan wilayah:export`).
 
 ## 5. Feature Requirements
-### Core & Extended Features (v2.5 - 2026 Release)
+### Core, Extended & Enterprise Features (v3.0 - 2026 Release)
 - [x] **Hierarchical Code Update**: Sinkronisasi kode Provinsi Papua Barat Daya (`96`), 6 kabupaten (`9601`..`9671`), 132 kecamatan (`96xxxx`), dan 1.013 kelurahan (`96xxxxxx`).
 - [x] **Nomenclature Standardization**: Penyelarasan nama resmi provinsi (Aceh, DKI Jakarta, DI Yogyakarta, Nusa Tenggara Barat, Nusa Tenggara Timur).
 - [x] **Eloquent Models Fix & Metadata**:
@@ -56,10 +56,20 @@ API Wilayah Indonesia 2026 adalah platform open-source berbasis Laravel 10 dan F
   - `GET /api/v1/kelurahan` & `GET /api/v1/kelurahan/{id}`
   - `GET /api/v1/search?q=` (Autocomplete Multi-tier)
   - `GET /api/v1/nearby?lat=&lng=&radius=` (Geospatial Radius Haversine)
+- [x] **GeoJSON RFC 7946 Standard**:
+  - `GET /api/v1/geojson/provinsi`
+  - `GET /api/v1/geojson/provinsi/{id}`
+  - `GET /api/v1/geojson/kabupaten`
+- [x] **Data Export Streaming Engine**:
+  - `GET /api/v1/export/{level}?format=csv|json`
+- [x] **Reusable Blade Cascading Component**:
+  - Komponen `<x-wilayah-cascade />` siap pakai di form Blade mana pun.
 - [x] **Developer Playground**: Antarmuka live testing di `/demo` (Cascading dropdown, copy code generator, live search, nearby radius).
 - [x] **CLI Artisan Tools**:
   - `php artisan wilayah:status`: Validasi 100% kepatuhan data terhadap standar Kemendagri 2026.
   - `php artisan wilayah:search {query}`: Pencarian instan dari terminal.
+  - `php artisan wilayah:export {level} {--format=}`: Ekspor lokal ke CSV/JSON.
+- [x] **Automated Testing Suite**: Suite tes PHPUnit di `tests/Feature/WilayahApiTest.php` (100% Pass).
 - [x] **OpenAPI 3.1 & Swagger UI**: File `public/docs/openapi.yaml` dan viewer `/api/documentation`.
 - [x] **Database Seeders**: Pemutakhiran `FromJsonSeeder.php` dan `ToJsonSeeder.php`.
 

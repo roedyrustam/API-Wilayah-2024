@@ -415,3 +415,95 @@ paths:
           description: Daftar wilayah terdekat berhasil ditemukan beserta jarak (distance_km)
         '422':
           description: Parameter koordinat tidak valid atau di luar jangkauan
+
+  /v1/geojson/provinsi:
+    get:
+      summary: GeoJSON RFC 7946 Seluruh Provinsi
+      description: Mengambil seluruh 38 provinsi dalam format standar RFC 7946 GeoJSON FeatureCollection untuk visualisasi peta Leaflet, Mapbox, dan QGIS.
+      tags:
+        - GeoJSON RFC 7946
+      parameters:
+        - name: search
+          in: query
+          description: Filter nama provinsi
+          required: false
+          schema:
+            type: string
+        - name: code
+          in: query
+          description: Filter kode provinsi
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: FeatureCollection GeoJSON provinsi berhasil diambil
+          content:
+            application/geo+json:
+              schema:
+                type: object
+
+  /v1/geojson/provinsi/{id}:
+    get:
+      summary: GeoJSON Feature Detail Provinsi
+      description: Mengambil detail satu provinsi dalam format RFC 7946 GeoJSON Feature berdasarkan ID atau kode wilayah.
+      tags:
+        - GeoJSON RFC 7946
+      parameters:
+        - name: id
+          in: path
+          description: ID atau kode provinsi (contoh: 26 atau 96)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: GeoJSON Feature provinsi ditemukan
+        '404':
+          description: Provinsi tidak ditemukan
+
+  /v1/geojson/kabupaten:
+    get:
+      summary: GeoJSON RFC 7946 Seluruh Kabupaten/Kota
+      description: Mengambil kabupaten/kota dalam format standar RFC 7946 GeoJSON FeatureCollection.
+      tags:
+        - GeoJSON RFC 7946
+      parameters:
+        - name: provinsi_id
+          in: query
+          description: Filter ID provinsi induk
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: FeatureCollection GeoJSON kabupaten/kota berhasil diambil
+
+  /v1/export/{level}:
+    get:
+      summary: Ekspor Master Data (CSV / JSON Stream)
+      description: Mengunduh langsung seluruh data wilayah per tingkat administratif dalam format file CSV spreadsheet (ber-BOM Excel UTF-8) atau JSON murni.
+      tags:
+        - Ekspor Data
+      parameters:
+        - name: level
+          in: path
+          description: Tingkat wilayah (provinsi, kabupaten, kecamatan, kelurahan)
+          required: true
+          schema:
+            type: string
+            enum: [provinsi, kabupaten, kecamatan, kelurahan]
+        - name: format
+          in: query
+          description: Format file keluaran (csv atau json)
+          required: false
+          schema:
+            type: string
+            enum: [csv, json]
+            default: csv
+      responses:
+        '200':
+          description: Berkas unduhan CSV/JSON berhasil dialirkan (streaming)
+        '404':
+          description: Tingkat wilayah tidak valid
+

@@ -47,11 +47,21 @@ class SearchController extends BaseApiController
                 ->limit(15)
                 ->get();
 
+            $totalMatches = $provinsi->count() + $kabupaten->count() + $kecamatan->count() + $kelurahan->count();
+
             return [
-                'provinsi'  => $provinsi,
-                'kabupaten' => $kabupaten,
-                'kecamatan' => $kecamatan,
-                'kelurahan' => $kelurahan,
+                'query'         => $q,
+                'total_matches' => $totalMatches,
+                'results'       => [
+                    'provinsi'  => $provinsi,
+                    'kabupaten' => $kabupaten,
+                    'kecamatan' => $kecamatan,
+                    'kelurahan' => $kelurahan,
+                ],
+                'provinsi'      => $provinsi,
+                'kabupaten'     => $kabupaten,
+                'kecamatan'     => $kecamatan,
+                'kelurahan'     => $kelurahan,
             ];
         });
 

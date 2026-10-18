@@ -20,6 +20,8 @@ use App\Http\Controllers\Api\KecamatanController;
 use App\Http\Controllers\Api\KelurahanController;
 use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\NearbyController;
+use App\Http\Controllers\Api\GeoJsonController;
+use App\Http\Controllers\Api\ExportController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -55,11 +57,23 @@ Route::prefix('v1')->group(function () {
 
     // Proximity / Nearby Geospatial Search
     Route::get('/nearby', [NearbyController::class, 'index']);
+
+    // GeoJSON RFC 7946 Standard Endpoints
+    Route::get('/geojson/provinsi', [GeoJsonController::class, 'provinsi']);
+    Route::get('/geojson/provinsi/{id}', [GeoJsonController::class, 'provinsiDetail']);
+    Route::get('/geojson/kabupaten', [GeoJsonController::class, 'kabupaten']);
+
+    // Master Data Export (CSV / JSON stream)
+    Route::get('/export/{level}', [ExportController::class, 'export']);
 });
 
-// Root alias for v1 for backward compatibility (e.g. /api/provinsi directly)
+// Root aliases for v1 for backward compatibility (e.g. /api/provinsi directly)
 Route::get('/search', [SearchController::class, 'search']);
 Route::get('/nearby', [NearbyController::class, 'index']);
+Route::get('/geojson/provinsi', [GeoJsonController::class, 'provinsi']);
+Route::get('/geojson/provinsi/{id}', [GeoJsonController::class, 'provinsiDetail']);
+Route::get('/geojson/kabupaten', [GeoJsonController::class, 'kabupaten']);
+Route::get('/export/{level}', [ExportController::class, 'export']);
 Route::get('/provinsi', [ProvinsiController::class, 'index']);
 Route::get('/provinsi/{id}', [ProvinsiController::class, 'show']);
 Route::get('/provinsi/{id}/kabupaten', [ProvinsiController::class, 'kabupaten']);

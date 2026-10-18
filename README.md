@@ -105,9 +105,12 @@
 | `GET` | `/api/v1/kelurahan/{id}` | Detail kelurahan/desa lengkap hierarki | - |
 | `GET` | `/api/v1/search` | **Autocomplete Global** (cari simultan 4 level wilayah) | `q` (minimal 2 karakter) |
 | `GET` | `/api/v1/nearby` | **Pencarian Proximity / Radius (GIS)** via Haversine | `lat`, `lng`, `radius` (km), `level`, `limit` |
+| `GET` | `/api/v1/geojson/provinsi` | **GeoJSON RFC 7946** seluruh provinsi untuk Leaflet/Mapbox | `search`, `code` |
+| `GET` | `/api/v1/geojson/kabupaten` | **GeoJSON RFC 7946** seluruh kabupaten/kota | `provinsi_id`, `search` |
+| `GET` | `/api/v1/export/{level}` | **Ekspor Master Data (Stream)** format CSV / JSON | `format` (`csv` / `json`) |
 
 *Catatan:*
-- *Endpoint juga dapat diakses tanpa prefix `v1` (misal: `/api/provinsi`, `/api/search`, `/api/nearby`).*
+- *Endpoint juga dapat diakses tanpa prefix `v1` (misal: `/api/provinsi`, `/api/search`, `/api/nearby`, `/api/geojson/provinsi`).*
 - *Dilengkapi **In-Memory Caching (TTL 24 jam)** untuk respons sub-5ms.*
 - *Dilengkapi **API Rate Limiter** 120 request/menit per alamat IP untuk mencegah abuse.*
 
@@ -136,9 +139,32 @@
 
 ---
 
-## 🛠️ CLI Artisan Commands
+## 🧩 Reusable Blade Component
 
-API Wilayah Indonesia 2026 dilengkapi perintah command-line khusus:
+Gunakan komponen dropdown cascading bertingkat 4 level langsung di view Blade aplikasi Anda:
+
+```blade
+<!-- Di dalam form Blade Anda -->
+<form action="/simpan-alamat" method="POST">
+    @csrf
+    
+    <x-wilayah-cascade 
+        :province-name="'provinsi_id'"
+        :regency-name="'kabupaten_id'"
+        :district-name="'kecamatan_id'"
+        :village-name="'kelurahan_id'"
+        :show-postal-code="true"
+    />
+
+    <button type="submit">Simpan Alamat</button>
+</form>
+```
+
+---
+
+## 🛠️ CLI Artisan Commands & Testing
+
+API Wilayah Indonesia 2026 dilengkapi serangkaian perintah CLI dan suite automated testing:
 
 ```bash
 # Periksa status integritas dan kepatuhan standar Kemendagri 2026 (termasuk DOB 96)
@@ -146,7 +172,13 @@ php artisan wilayah:status
 
 # Cari data wilayah secara instan langsung dari terminal shell
 php artisan wilayah:search Sorong
-php artisan wilayah:search 98415
+
+# Ekspor master data ke CSV / JSON di storage/app/exports
+php artisan wilayah:export provinsi --format=csv
+php artisan wilayah:export kabupaten --format=csv
+
+# Jalankan automated test suite (PHPUnit / Feature Tests)
+php artisan test
 ```
 
 ---

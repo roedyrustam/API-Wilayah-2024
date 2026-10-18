@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.0] - 2026-10-18
+
+### Added
+- **GeoJSON RFC 7946 Standar Ekosistem**: Menambahkan [`GeoJsonController.php`](file:///c:/apiwilayah2027/API-Wilayah-2024/app/Http/Controllers/Api/GeoJsonController.php) dan endpoint `/api/v1/geojson/provinsi`, `/api/v1/geojson/provinsi/{id}`, dan `/api/v1/geojson/kabupaten` dengan format GeoJSON FeatureCollection ber-header `application/geo+json` yang langsung kompatibel dengan Leaflet, Mapbox, QGIS, dan Google Maps.
+- **Data Export Streaming (CSV & JSON Stream)**: Menambahkan [`ExportController.php`](file:///c:/apiwilayah2027/API-Wilayah-2024/app/Http/Controllers/Api/ExportController.php) dan endpoint `/api/v1/export/{level}?format=csv|json` dengan UTF-8 BOM untuk kompatibilitas Excel dan memory-safe streaming.
+- **Komponen Blade Cascading Dropdown `<x-wilayah-cascade />`**: Komponen reusable Blade di [`resources/views/components/wilayah-cascade.blade.php`](file:///c:/apiwilayah2027/API-Wilayah-2024/resources/views/components/wilayah-cascade.blade.php) yang dapat di-embed langsung ke proyek Laravel apa pun dengan binding form dan live kode pos.
+- **Artisan Exporter Command**: Menambahkan perintah `php artisan wilayah:export {level} {--format=csv|json}`.
+- **PHPUnit & Feature Test Suite Komprehensif**: Menambahkan [`tests/Feature/WilayahApiTest.php`](file:///c:/apiwilayah2027/API-Wilayah-2024/tests/Feature/WilayahApiTest.php) dengan 14 test case dan 51 assertion (100% PASS via `php artisan test`).
+
 ## [2.5.0] - 2026-10-18
 
 ### Added
