@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.0] - 2026-10-18
+
+### Added
+- **Docker Containerization**: Menambahkan `Dockerfile` production-grade berbasis PHP 8.2-FPM Alpine + Nginx + OPcache, konfigurasi `docker/nginx.conf`, `docker/supervisord.conf`, `docker/opcache.ini`, script `docker/entrypoint.sh`, dan `docker-compose.yml` untuk deployment instan satu perintah (`docker compose up -d`).
+- **Universal Client SDK (JavaScript & TypeScript)**: Menambahkan library klien tanpa dependensi pihak ketiga di `public/sdk/api-wilayah.js` (format UMD untuk `<script>`), `public/sdk/api-wilayah.esm.js` (format ES Module untuk React/Vue/Vite/Next.js), dan `public/sdk/api-wilayah.d.ts` (definisi tipe TypeScript lengkap).
+- **Artisan Deep Audit Command (`php artisan wilayah:audit`)**: Perintah CLI untuk melakukan 10 kategori pengujian kepatuhan menyeluruh terhadap master data (38 provinsi, DOB 96, 514 kab/kota, 7.277 kec, 83.763 kel, integritas relasi foreign key, kodifikasi digit, GIS bounding box, dan metadata zona waktu).
+- **Pembaruan Playground `/demo`**: Menambahkan Tab 4 (GeoJSON Explorer interaktif dengan copy & live viewer) dan Tab 5 (Streaming Exporter & SDK Quickstart) pada antarmuka web.
+- **GitHub Actions Modern CI/CD Pipeline (`.github/workflows/ci.yml`)**: Otomatisasi pengujian matrix PHP 8.2 dan 8.3 dengan cache composer, eksekusi test suite PHPUnit, dan audit integritas master data via CLI.
+
 ## [3.0.0] - 2026-10-18
 
 ### Added

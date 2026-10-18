@@ -1,6 +1,6 @@
 # Product Requirements Document (PRD)
 **Project**: API Wilayah Indonesia 2026  
-**Version**: 3.0.0  
+**Version**: 3.1.0  
 **Status**: Approved & Released  
 **Created**: 2026-10-18  
 **Last Updated**: 2026-10-18  
@@ -8,7 +8,7 @@
 ---
 
 ## 1. Executive Summary
-API Wilayah Indonesia 2026 adalah platform open-source berbasis Laravel 10 dan Filament 3 yang menyediakan master data wilayah administratif Republik Indonesia (Provinsi, Kabupaten/Kota, Kecamatan, dan Kelurahan/Desa) termutakhir sesuai standar regulasi Kementerian Dalam Negeri 2024–2026. Platform ini menyediakan RESTful API berkinerja tinggi dengan query caching (sub-5ms), pencarian geospatial proximity (Haversine radius), standar GeoJSON RFC 7946 untuk visualisasi peta, streaming ekspor CSV/JSON, reusable Blade component `<x-wilayah-cascade />`, CLI Artisan commands, interactive developer playground di `/demo`, serta suite pengujian automated PHPUnit lengkap.
+API Wilayah Indonesia 2026 adalah platform open-source berbasis Laravel 10 dan Filament 3 yang menyediakan master data wilayah administratif Republik Indonesia (Provinsi, Kabupaten/Kota, Kecamatan, dan Kelurahan/Desa) termutakhir sesuai standar regulasi Kementerian Dalam Negeri 2024–2026. Platform ini menyediakan RESTful API berkinerja tinggi dengan query caching (sub-5ms), pencarian geospatial proximity (Haversine radius), standar GeoJSON RFC 7946 untuk visualisasi peta, streaming ekspor CSV/JSON, reusable Blade component `<x-wilayah-cascade />`, Universal Client SDK (UMD/ESM/TypeScript), Docker containerization production-ready, CLI Artisan commands (`wilayah:status`, `wilayah:audit`, `wilayah:search`, `wilayah:export`), interactive developer playground di `/demo`, serta suite pengujian automated PHPUnit lengkap dan GitHub Actions CI/CD pipeline.
 
 ## 2. Problem Statement
 - **Inkonsistensi Kode DOB**: Daerah Otonom Baru (DOB) Papua Barat Daya sebelumnya tercatat menggunakan kode duplikat `92` (Papua Barat), padahal kode resmi Kemendagri adalah `96`, mengakibatkan rusaknya integritas hierarki data kabupaten, kecamatan, dan kelurahan.
@@ -67,9 +67,15 @@ API Wilayah Indonesia 2026 adalah platform open-source berbasis Laravel 10 dan F
 - [x] **Developer Playground**: Antarmuka live testing di `/demo` (Cascading dropdown, copy code generator, live search, nearby radius).
 - [x] **CLI Artisan Tools**:
   - `php artisan wilayah:status`: Validasi 100% kepatuhan data terhadap standar Kemendagri 2026.
+  - `php artisan wilayah:audit`: Audit mendalam 10 kategori kepatuhan Kemendagri (DOB 96, foreign keys, GIS bounding box, timezone).
   - `php artisan wilayah:search {query}`: Pencarian instan dari terminal.
   - `php artisan wilayah:export {level} {--format=}`: Ekspor lokal ke CSV/JSON.
-- [x] **Automated Testing Suite**: Suite tes PHPUnit di `tests/Feature/WilayahApiTest.php` (100% Pass).
+- [x] **Universal Client SDK**:
+  - `public/sdk/api-wilayah.js` (UMD), `public/sdk/api-wilayah.esm.js` (ESM), `public/sdk/api-wilayah.d.ts` (TypeScript).
+- [x] **Docker Containerization**:
+  - `Dockerfile` (PHP 8.2-FPM + Nginx + OPcache Preloading) & `docker-compose.yml`.
+- [x] **Automated Testing & CI/CD**:
+  - Suite tes PHPUnit di `tests/Feature/WilayahApiTest.php` (100% Pass) & `.github/workflows/ci.yml`.
 - [x] **OpenAPI 3.1 & Swagger UI**: File `public/docs/openapi.yaml` dan viewer `/api/documentation`.
 - [x] **Database Seeders**: Pemutakhiran `FromJsonSeeder.php` dan `ToJsonSeeder.php`.
 

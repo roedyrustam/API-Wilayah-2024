@@ -463,6 +463,67 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* Export & SDK Styles */
+        .btn-export {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-export:hover {
+            background: linear-gradient(135deg, #0369a1, #075985);
+            box-shadow: 0 0 12px rgba(2, 132, 199, 0.4);
+        }
+        .btn-export-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+        }
+        .btn-export-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        .code-box {
+            background: #05070b;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: #38bdf8;
+            overflow-x: auto;
+            white-space: pre;
+            line-height: 1.6;
+        }
+        .export-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .export-card h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .export-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
     </style>
 </head>
 <body>
@@ -495,6 +556,8 @@
             <button class="tab-btn active" onclick="switchTab('tab-cascading', this)">Cascading Dropdown</button>
             <button class="tab-btn" onclick="switchTab('tab-search', this)">Global Autocomplete</button>
             <button class="tab-btn" onclick="switchTab('tab-nearby', this)">Nearby Radius (GPS)</button>
+            <button class="tab-btn" onclick="switchTab('tab-geojson', this)">GeoJSON RFC 7946</button>
+            <button class="tab-btn" onclick="switchTab('tab-export-sdk', this)">Export & Client SDK</button>
         </div>
 
         <!-- TAB 1: CASCADING DROPDOWN -->
@@ -665,6 +728,147 @@
                 </div>
             </div>
         </section>
+
+        <!-- TAB 4: GEOJSON RFC 7946 -->
+        <section id="tab-geojson" class="tab-panel">
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">GeoJSON Explorer (RFC 7946)</h3>
+                        <span id="geojson-loading" style="display:none;"><span class="spinner"></span></span>
+                    </div>
+                    <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">
+                        Endpoint GeoJSON standar RFC 7946 dengan format FeatureCollection. Dapat langsung digunakan di Leaflet, Mapbox, Google Maps, OpenLayers, atau software SIG (QGIS/ArcGIS).
+                    </p>
+
+                    <div class="form-group">
+                        <label class="form-label" for="geojson-level">Tingkat Wilayah</label>
+                        <select id="geojson-level" class="form-select" onchange="onGeoJsonLevelChange()">
+                            <option value="provinsi">Seluruh Provinsi (38 Fitur Point)</option>
+                            <option value="kabupaten">Kabupaten / Kota Terpilih</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="geojson-prov-group" style="display:none;">
+                        <label class="form-label" for="geojson-prov-id">Pilih Provinsi Parent</label>
+                        <select id="geojson-prov-id" class="form-select" onchange="loadGeoJson()">
+                            <option value="">-- Pilih Provinsi --</option>
+                        </select>
+                    </div>
+
+                    <div class="chip-container" style="margin-top:16px;">
+                        <span class="info-label" style="font-size:12px; align-self:center;">Contoh Cepat:</span>
+                        <button class="chip" onclick="quickGeoJson('provinsi', null)">Semua 38 Provinsi</button>
+                        <button class="chip" onclick="quickGeoJson('provinsi', 26)">Papua Barat Daya (96)</button>
+                        <button class="chip" onclick="quickGeoJson('provinsi', 6)">DKI Jakarta (31)</button>
+                        <button class="chip" onclick="quickGeoJson('kabupaten', 26)">6 Kab/Kota PBD</button>
+                    </div>
+
+                    <div style="margin-top:20px; display:flex; gap:10px;">
+                        <button class="btn-export" onclick="copyGeoJson()">Salin GeoJSON</button>
+                        <a id="geojson-raw-link" href="/api/v1/geojson/provinsi" target="_blank" class="btn-export btn-export-secondary">Buka Raw URL</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Live GeoJSON Payload</h3>
+                        <span id="geojson-summary" class="badge-code">0 Features</span>
+                    </div>
+                    <pre id="geojson-output" class="code-box" style="max-height: 480px; overflow-y: auto;">// Klik salah satu contoh di sebelah kiri untuk memuat GeoJSON...</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- TAB 5: EXPORT & CLIENT SDK -->
+        <section id="tab-export-sdk" class="tab-panel">
+            <h3 style="font-size:18px; font-weight:700; margin-bottom:14px;">1. Streaming Exporter (CSV & JSON)</h3>
+            <p style="font-size:13.5px; color:var(--text-muted); margin-bottom:20px;">
+                Download seluruh master data per tingkat wilayah secara efisien tanpa memory limit (streaming generator). File CSV dilengkapi UTF-8 BOM sehingga langsung terbaca rapi di Microsoft Excel.
+            </p>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px; margin-bottom:32px;">
+                <div class="export-card">
+                    <div>
+                        <h4>Provinsi</h4>
+                        <p>38 Provinsi lengkap dengan kode Kemendagri, koordinat GIS, dan zona waktu.</p>
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                        <a href="/api/v1/export/provinsi?format=csv" class="btn-export" style="flex:1;">CSV</a>
+                        <a href="/api/v1/export/provinsi?format=json" class="btn-export btn-export-secondary" style="flex:1;">JSON</a>
+                    </div>
+                </div>
+
+                <div class="export-card">
+                    <div>
+                        <h4>Kabupaten / Kota</h4>
+                        <p>514 Kab/Kota terverifikasi, tipe (Kab/Kota), dan relasi ke provinsi parent.</p>
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                        <a href="/api/v1/export/kabupaten?format=csv" class="btn-export" style="flex:1;">CSV</a>
+                        <a href="/api/v1/export/kabupaten?format=json" class="btn-export btn-export-secondary" style="flex:1;">JSON</a>
+                    </div>
+                </div>
+
+                <div class="export-card">
+                    <div>
+                        <h4>Kecamatan / Distrik</h4>
+                        <p>7.277 Kecamatan dengan kodifikasi Kemendagri 6-digit.</p>
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                        <a href="/api/v1/export/kecamatan?format=csv" class="btn-export" style="flex:1;">CSV</a>
+                        <a href="/api/v1/export/kecamatan?format=json" class="btn-export btn-export-secondary" style="flex:1;">JSON</a>
+                    </div>
+                </div>
+
+                <div class="export-card">
+                    <div>
+                        <h4>Kelurahan / Desa</h4>
+                        <p>83.763 Desa & Kelurahan beserta kode pos resmi Indonesia.</p>
+                    </div>
+                    <div style="display:flex; gap:8px;">
+                        <a href="/api/v1/export/kelurahan?format=csv" class="btn-export" style="flex:1;">CSV</a>
+                        <a href="/api/v1/export/kelurahan?format=json" class="btn-export btn-export-secondary" style="flex:1;">JSON</a>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="font-size:18px; font-weight:700; margin-bottom:14px;">2. Universal Client SDK & Komponen Blade</h3>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Blade Cascading Component</h3>
+                    </div>
+                    <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">
+                        Komponen siap pakai untuk project Laravel Blade dengan styling otomatis dan JavaScript scoped:
+                    </p>
+                    <div class="code-box">&lt;!-- Dropdown 4-Tingkat Lengkap --&gt;
+&lt;x-wilayah-cascade 
+    name-provinsi="provinsi_id"
+    name-kabupaten="kabupaten_id"
+    name-kecamatan="kecamatan_id"
+    name-kelurahan="kelurahan_id"
+    :show-postal-code="true"
+/&gt;</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">JavaScript SDK (UMD / ESM)</h3>
+                    </div>
+                    <p style="font-size:13px; color:var(--text-muted); margin-bottom:12px;">
+                        Gunakan SDK tanpa dependensi di browser atau bundler (Vite, React, Vue, Next.js):
+                    </p>
+                    <div class="code-box">&lt;script src="/sdk/api-wilayah.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  const api = new WilayahClient();
+  const provinces = await api.getProvinces();
+  const regencies = await api.getRegencies('96'); // PBD
+  const nearby = await api.getNearby(-0.8762, 131.2558);
+&lt;/script&gt;</div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <script>
@@ -693,11 +897,19 @@
                 if (json.status && json.data) {
                     provincesCache = json.data;
                     const sel = document.getElementById('sel-provinsi');
+                    const geoSel = document.getElementById('geojson-prov-id');
                     provincesCache.forEach(p => {
                         const opt = document.createElement('option');
                         opt.value = p.id;
                         opt.textContent = `${p.name} (${p.code})`;
                         sel.appendChild(opt);
+
+                        if (geoSel) {
+                            const optGeo = document.createElement('option');
+                            optGeo.value = p.id;
+                            optGeo.textContent = `${p.name} (${p.code})`;
+                            geoSel.appendChild(optGeo);
+                        }
                     });
                 }
             } catch (e) {
@@ -1032,6 +1244,77 @@
             } catch (e) {
                 console.error(e);
             }
+        }
+
+        // TAB 4: GeoJSON RFC 7946 Explorer
+        let currentGeoJson = null;
+
+        function onGeoJsonLevelChange() {
+            const lvl = document.getElementById('geojson-level').value;
+            const provGroup = document.getElementById('geojson-prov-group');
+            if (lvl === 'kabupaten') {
+                provGroup.style.display = 'block';
+            } else {
+                provGroup.style.display = 'none';
+            }
+            loadGeoJson();
+        }
+
+        async function loadGeoJson() {
+            const lvl = document.getElementById('geojson-level').value;
+            const provId = document.getElementById('geojson-prov-id').value;
+            const loading = document.getElementById('geojson-loading');
+            const output = document.getElementById('geojson-output');
+            const summary = document.getElementById('geojson-summary');
+            const rawLink = document.getElementById('geojson-raw-link');
+
+            let endpoint = `/api/v1/geojson/${lvl}`;
+            if (lvl === 'kabupaten' && provId) {
+                endpoint = `/api/v1/geojson/provinsi/${provId}`;
+            }
+
+            rawLink.href = endpoint;
+            loading.style.display = 'inline-block';
+            output.innerText = '// Memuat data GeoJSON...';
+
+            try {
+                const res = await fetch(endpoint);
+                const data = await res.json();
+                currentGeoJson = data;
+
+                const count = data.features ? data.features.length : 0;
+                summary.innerText = `${count} Features (${data.type})`;
+
+                output.innerText = JSON.stringify(data, null, 2);
+            } catch (err) {
+                output.innerText = '// Terjadi kesalahan memuat GeoJSON: ' + err.message;
+            } finally {
+                loading.style.display = 'none';
+            }
+        }
+
+        function quickGeoJson(level, id) {
+            document.getElementById('geojson-level').value = level;
+            const provGroup = document.getElementById('geojson-prov-group');
+            if (level === 'kabupaten' || id) {
+                provGroup.style.display = 'block';
+                if (id) {
+                    document.getElementById('geojson-prov-id').value = id;
+                }
+            } else {
+                provGroup.style.display = 'none';
+            }
+            loadGeoJson();
+        }
+
+        function copyGeoJson() {
+            if (!currentGeoJson) {
+                alert('Silakan muat GeoJSON terlebih dahulu.');
+                return;
+            }
+            navigator.clipboard.writeText(JSON.stringify(currentGeoJson, null, 2))
+                .then(() => alert('GeoJSON RFC 7946 berhasil disalin ke clipboard!'))
+                .catch(err => alert('Gagal menyalin: ' + err.message));
         }
     </script>
 </body>

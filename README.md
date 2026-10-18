@@ -162,13 +162,58 @@ Gunakan komponen dropdown cascading bertingkat 4 level langsung di view Blade ap
 
 ---
 
+## 🐳 Deployment Cepat dengan Docker
+
+API Wilayah Indonesia 2026 sudah dilengkapi dengan container production berbasis **PHP 8.2-FPM + Nginx + OPcache Preloading**:
+
+```bash
+# Jalankan container langsung dalam 1 perintah
+docker compose up -d
+
+# Periksa status service dan healthcheck
+docker compose ps
+```
+Aplikasi akan langsung aktif di **http://localhost:8080** lengkap dengan dokumentasi OpenAPI, Playground, dan endpoint REST API.
+
+---
+
+## 📦 Universal Client SDK (JavaScript & TypeScript)
+
+Tersedia SDK siap pakai tanpa dependensi eksternal di direktori `public/sdk/`:
+- **UMD Bundle (Browser `<script>`)**: `/sdk/api-wilayah.js`
+- **ES Module (Vite, React, Vue, Next.js, Nuxt)**: `/sdk/api-wilayah.esm.js`
+- **TypeScript Declarations**: `/sdk/api-wilayah.d.ts`
+
+```javascript
+import { WilayahClient } from '/sdk/api-wilayah.esm.js';
+
+const api = new WilayahClient({ baseUrl: 'http://127.0.0.1:8000' });
+
+// Ambil 38 Provinsi
+const provinces = await api.getProvinces();
+
+// Ambil Kab/Kota di Papua Barat Daya
+const regencies = await api.getRegencies('96');
+
+// Pencarian Radius Proximity (GPS)
+const nearby = await api.getNearby(-0.8762, 131.2558, { radius: 50 });
+
+// Format GeoJSON RFC 7946
+const geojson = await api.getGeoJson('provinsi');
+```
+
+---
+
 ## 🛠️ CLI Artisan Commands & Testing
 
 API Wilayah Indonesia 2026 dilengkapi serangkaian perintah CLI dan suite automated testing:
 
 ```bash
-# Periksa status integritas dan kepatuhan standar Kemendagri 2026 (termasuk DOB 96)
+# Periksa status ringkas master data
 php artisan wilayah:status
+
+# Audit mendalam kepatuhan 100% standar Kemendagri 2026 (DOB 96, foreign keys, GIS)
+php artisan wilayah:audit
 
 # Cari data wilayah secara instan langsung dari terminal shell
 php artisan wilayah:search Sorong
@@ -202,14 +247,21 @@ php artisan make:filament-user
 - [x] Master data 38 Provinsi, 514 Kab/Kota, 7.277 Kecamatan, 83.763 Kelurahan/Desa
 - [x] Sinkronisasi kode DOB Papua Barat Daya ke standar Kemendagri (`96`)
 - [x] Penyelarasan kode pos lengkap pada seluruh kelurahan/desa
-- [x] RESTful API Publik dengan filter dan pencarian
+- [x] RESTful API Publik dengan filter, rate-limiter, dan in-memory cache
 - [x] Dokumentasi OpenAPI 3.1 & Swagger UI di `/api/documentation`
 - [x] Filament 3 Admin Dashboard untuk manajemen data
-- [ ] Dukungan koordinat Latitude & Longitude (v2.5)
-- [ ] Polygon GeoJSON batas wilayah administratif (v3.0)
+- [x] Dukungan koordinat Latitude & Longitude serta zona waktu (WIB/WITA/WIT) (v2.5)
+- [x] Pencarian proximity radius Haversine (`/api/v1/nearby`) (v2.5)
+- [x] Developer Playground interaktif di `/demo` (v2.5 & v3.0)
+- [x] GeoJSON Standar RFC 7946 FeatureCollection (`/api/v1/geojson/...`) (v3.0)
+- [x] Streaming Exporter memori-aman CSV/JSON (`/api/v1/export/...`) (v3.0)
+- [x] Reusable Laravel Blade Cascading Component `<x-wilayah-cascade />` (v3.0)
+- [x] Universal Client SDK JS/TS & Docker Containerization (v3.1)
+- [x] Audit CLI Kemendagri 2026 (`php artisan wilayah:audit`) & Modern CI/CD (v3.1)
 
 ---
 
 ## 📄 Lisensi
 
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).
+

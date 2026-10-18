@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  api-wilayah:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: api-wilayah-2026:latest
+    container_name: api_wilayah_app
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      - APP_NAME="API Wilayah Indonesia 2026"
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - APP_URL=http://localhost:8080
+      - DB_CONNECTION=sqlite
+      - DB_DATABASE=/var/www/html/database/database.sqlite
+    volumes:
+      - ./storage:/var/www/html/storage
+      - ./database:/var/www/html/database
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/api/v1/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

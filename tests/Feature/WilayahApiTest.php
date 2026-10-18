@@ -199,5 +199,8 @@ class WilayahApiTest extends TestCase
 
         $exportCode = Artisan::call('wilayah:export', ['level' => 'provinsi', '--format' => 'csv']);
         $this->assertEquals(0, $exportCode);
+
+        $auditCode = Artisan::call('wilayah:audit');
+        $this->assertEquals(0, $auditCode);
     }
 }
