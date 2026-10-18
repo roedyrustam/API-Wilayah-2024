@@ -28,13 +28,23 @@ class KabupatenResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('type'),
-                Forms\Components\TextInput::make('code'),
-                Forms\Components\TextInput::make('name'),
-                Forms\Components\TextInput::make('full_code'),
-                Forms\Components\DatePicker::make('updated_at'),
-                Forms\Components\DatePicker::make('created_at'),
-
+                Forms\Components\Select::make('provinsi_id')
+                    ->relationship('provinsi', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
+                Forms\Components\TextInput::make('type')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('code')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('full_code')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -42,13 +52,14 @@ class KabupatenResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id'),
-                TextColumn::make('type'),
-                TextColumn::make('code'),
-                TextColumn::make('name'),
-                TextColumn::make('full_code'),
-                TextColumn::make('updated_at'),
-                TextColumn::make('created_at'),
+                TextColumn::make('id')->sortable(),
+                TextColumn::make('provinsi.name')->sortable()->searchable(),
+                TextColumn::make('type')->sortable(),
+                TextColumn::make('code')->searchable(),
+                TextColumn::make('name')->sortable()->searchable(),
+                TextColumn::make('full_code')->searchable(),
+                TextColumn::make('created_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('updated_at')->dateTime()->sortable()->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

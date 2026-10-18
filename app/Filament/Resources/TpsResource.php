@@ -23,18 +23,22 @@ class TpsResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('provinsi_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('kabupaten_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('kecamatan_id')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('kelurahan_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('provinsi_id')
+                    ->relationship('provinsi', 'name')
+                    ->searchable()
+                    ->required(),
+                Forms\Components\Select::make('kabupaten_id')
+                    ->relationship('kabupaten', 'name')
+                    ->searchable()
+                    ->required(),
+                Forms\Components\Select::make('kecamatan_id')
+                    ->relationship('kecamatan', 'name')
+                    ->searchable()
+                    ->required(),
+                Forms\Components\Select::make('kelurahan_id')
+                    ->relationship('kelurahan', 'name')
+                    ->searchable()
+                    ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -51,18 +55,18 @@ class TpsResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('provinsi_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('kabupaten_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('kecamatan_id')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('kelurahan_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('provinsi.name')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('kabupaten.name')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('kecamatan.name')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('kelurahan.name')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('nomor_tps')

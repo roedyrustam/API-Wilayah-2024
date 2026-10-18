@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Aceh (NAD)",
+        "name": "Aceh",
         "code": "11"
     },
     {
@@ -21,7 +21,7 @@
     },
     {
         "id": 5,
-        "name": "DI Yogyakarta",
+        "name": "Daerah Istimewa Yogyakarta",
         "code": "34"
     },
     {
@@ -106,12 +106,12 @@
     },
     {
         "id": 22,
-        "name": "Nusa Tenggara Barat (NTB)",
+        "name": "Nusa Tenggara Barat",
         "code": "52"
     },
     {
         "id": 23,
-        "name": "Nusa Tenggara Timur (NTT)",
+        "name": "Nusa Tenggara Timur",
         "code": "53"
     },
     {
@@ -127,7 +127,7 @@
     {
         "id": 26,
         "name": "Papua Barat Daya",
-        "code": "92"
+        "code": "96"
     },
     {
         "id": 27,

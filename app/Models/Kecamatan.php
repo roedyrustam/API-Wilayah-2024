@@ -15,9 +15,9 @@ class Kecamatan extends Model
         'name', 'code', 'full_code'
     ];
 
-    public function provinsi(): BelongsTo
+    public function kabupaten(): BelongsTo
     {
-        return $this->belongsTo(Provinsi::class);
+        return $this->belongsTo(Kabupaten::class);
     }
 
     public function kelurahan(): HasMany

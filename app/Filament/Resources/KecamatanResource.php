@@ -26,9 +26,11 @@ class KecamatanResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('kabupaten_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('kabupaten_id')
+                    ->relationship('kabupaten', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
                 Forms\Components\TextInput::make('code')
                     ->required()
                     ->maxLength(255),
@@ -45,9 +47,10 @@ class KecamatanResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('kabupaten_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('id')->sortable(),
+                Tables\Columns\TextColumn::make('kabupaten.name')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('code')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')

@@ -1364,7 +1364,7 @@
         "type": "Kabupaten",
         "name": "Sorong",
         "code": "01",
-        "full_code": "9201",
+        "full_code": "9601",
         "provinsi_id": 26
     },
     {
@@ -1380,15 +1380,15 @@
         "type": "Kota",
         "name": "Sorong",
         "code": "71",
-        "full_code": "9271",
+        "full_code": "9671",
         "provinsi_id": 26
     },
     {
         "id": 174,
         "type": "Kabupaten",
         "name": "Sorong Selatan",
-        "code": "04",
-        "full_code": "9204",
+        "code": "02",
+        "full_code": "9602",
         "provinsi_id": 26
     },
     {
@@ -1891,8 +1891,8 @@
         "id": 237,
         "type": "Kabupaten",
         "name": "Tambrauw",
-        "code": "09",
-        "full_code": "9209",
+        "code": "04",
+        "full_code": "9604",
         "provinsi_id": 26
     },
     {
@@ -3203,8 +3203,8 @@
         "id": 401,
         "type": "Kabupaten",
         "name": "Maybrat",
-        "code": "10",
-        "full_code": "9210",
+        "code": "05",
+        "full_code": "9605",
         "provinsi_id": 26
     },
     {
@@ -4059,8 +4059,8 @@
         "id": 508,
         "type": "Kabupaten",
         "name": "Raja Ampat",
-        "code": "05",
-        "full_code": "9205",
+        "code": "03",
+        "full_code": "9603",
         "provinsi_id": 26
     },
     {

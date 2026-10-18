@@ -11,13 +11,16 @@ class Kelurahan extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'kecamatan_id',
+        'code',
         'name',
-        'kabupaten_id'
+        'full_code',
+        'pos_code',
     ];
 
-    public function kabupaten(): BelongsTo
+    public function kecamatan(): BelongsTo
     {
-        return $this->belongsTo(Kabupaten::class);
+        return $this->belongsTo(Kecamatan::class);
     }
 
     public function pemilih(): HasMany

@@ -1,0 +1,349 @@
+openapi: 3.1.0
+info:
+  title: API Wilayah Indonesia 2026
+  description: >
+    Dokumentasi resmi REST API Wilayah Administratif Republik Indonesia edisi 2026.
+    Mencakup data terkini 38 Provinsi (termasuk Daerah Khusus Jakarta dan 4 DOB Papua:
+    Papua Selatan, Papua Tengah, Papua Pegunungan, dan Papua Barat Daya dengan kode resmi 96),
+    514 Kabupaten/Kota, 7.277 Kecamatan, dan 83.763 Kelurahan/Desa beserta kode pos.
+  version: 2.0.0
+  contact:
+    name: Roedy Rustam
+    url: https://github.com/roedyrustam
+servers:
+  - url: http://127.0.0.1:8000/api
+    description: Local Development Server
+  - url: /api
+    description: Current Host Relative
+
+paths:
+  /v1/provinsi:
+    get:
+      summary: Daftar Provinsi
+      description: Mengambil seluruh data 38 provinsi di Indonesia dengan dukungan pencarian dan pagination.
+      tags:
+        - Provinsi
+      parameters:
+        - name: search
+          in: query
+          description: Cari berdasarkan nama provinsi (contoh: Papua, Jawa, Jakarta)
+          required: false
+          schema:
+            type: string
+        - name: code
+          in: query
+          description: Filter berdasarkan 2-digit kode provinsi (contoh: 11, 31, 96)
+          required: false
+          schema:
+            type: string
+        - name: paginate
+          in: query
+          description: Set true untuk mengaktifkan pagination (default: false)
+          required: false
+          schema:
+            type: boolean
+        - name: per_page
+          in: query
+          description: Jumlah data per halaman jika paginate=true (maksimal 100)
+          required: false
+          schema:
+            type: integer
+            default: 15
+      responses:
+        '200':
+          description: Berhasil mengambil data provinsi
+          content:
+            application/json:
+              example:
+                success: true
+                message: "Daftar seluruh provinsi berhasil diambil"
+                data:
+                  - id: 1
+                    name: "Aceh"
+                    code: "11"
+                  - id: 26
+                    name: "Papua Barat Daya"
+                    code: "96"
+                meta:
+                  total: 38
+
+  /v1/provinsi/{id}:
+    get:
+      summary: Detail Provinsi
+      description: Mengambil detail provinsi berdasarkan ID numerik atau 2-digit kode provinsi (contoh: 26 atau 96).
+      tags:
+        - Provinsi
+      parameters:
+        - name: id
+          in: path
+          description: ID database atau kode provinsi (contoh: 26 atau 96)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Detail provinsi ditemukan
+        '404':
+          description: Provinsi tidak ditemukan
+
+  /v1/provinsi/{id}/kabupaten:
+    get:
+      summary: Daftar Kabupaten/Kota di Provinsi
+      description: Mengambil semua kabupaten/kota di bawah provinsi tertentu.
+      tags:
+        - Provinsi
+        - Kabupaten
+      parameters:
+        - name: id
+          in: path
+          description: ID atau kode provinsi (contoh: 26 atau 96)
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Cari nama kabupaten/kota
+          required: false
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Filter tipe (Kabupaten atau Kota)
+          required: false
+          schema:
+            type: string
+            enum: [Kabupaten, Kota]
+      responses:
+        '200':
+          description: Daftar kabupaten/kota berhasil diambil
+
+  /v1/kabupaten:
+    get:
+      summary: Daftar Seluruh Kabupaten/Kota
+      description: Mengambil data 514 kabupaten/kota di Indonesia dengan filter provinsi, tipe, dan pencarian.
+      tags:
+        - Kabupaten
+      parameters:
+        - name: provinsi_id
+          in: query
+          description: Filter berdasarkan ID provinsi induk
+          required: false
+          schema:
+            type: integer
+        - name: search
+          in: query
+          description: Cari nama kabupaten/kota
+          required: false
+          schema:
+            type: string
+        - name: full_code
+          in: query
+          description: Filter berdasarkan 4-digit full code (contoh: 9601, 3171)
+          required: false
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Filter tipe wilayah
+          required: false
+          schema:
+            type: string
+            enum: [Kabupaten, Kota]
+        - name: paginate
+          in: query
+          description: Set true untuk pagination
+          required: false
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: Berhasil mengambil data kabupaten/kota
+
+  /v1/kabupaten/{id}:
+    get:
+      summary: Detail Kabupaten/Kota
+      description: Mengambil detail kabupaten/kota berdasarkan ID atau 4-digit kode wilayah.
+      tags:
+        - Kabupaten
+      parameters:
+        - name: id
+          in: path
+          description: ID atau full_code (contoh: 171 atau 9601)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Detail kabupaten/kota ditemukan
+        '404':
+          description: Kabupaten/Kota tidak ditemukan
+
+  /v1/kabupaten/{id}/kecamatan:
+    get:
+      summary: Daftar Kecamatan di Kabupaten/Kota
+      description: Mengambil seluruh kecamatan (distrik) di bawah kabupaten/kota tertentu.
+      tags:
+        - Kabupaten
+        - Kecamatan
+      parameters:
+        - name: id
+          in: path
+          description: ID atau full_code kabupaten (contoh: 171 atau 9601)
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Cari nama kecamatan
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Daftar kecamatan berhasil diambil
+
+  /v1/kecamatan:
+    get:
+      summary: Daftar Seluruh Kecamatan
+      description: Mengambil data kecamatan (distrik) di Indonesia dengan pagination (default: 25 per halaman).
+      tags:
+        - Kecamatan
+      parameters:
+        - name: kabupaten_id
+          in: query
+          description: Filter berdasarkan ID kabupaten induk
+          required: false
+          schema:
+            type: integer
+        - name: search
+          in: query
+          description: Cari nama kecamatan
+          required: false
+          schema:
+            type: string
+        - name: full_code
+          in: query
+          description: Filter 6-digit full code (contoh: 960101)
+          required: false
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          description: Jumlah data per halaman (default: 25)
+          required: false
+          schema:
+            type: integer
+            default: 25
+      responses:
+        '200':
+          description: Berhasil mengambil data kecamatan
+
+  /v1/kecamatan/{id}:
+    get:
+      summary: Detail Kecamatan
+      description: Mengambil detail kecamatan berdasarkan ID atau 6-digit full_code.
+      tags:
+        - Kecamatan
+      parameters:
+        - name: id
+          in: path
+          description: ID atau full_code (contoh: 960414)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Detail kecamatan ditemukan
+        '404':
+          description: Kecamatan tidak ditemukan
+
+  /v1/kecamatan/{id}/kelurahan:
+    get:
+      summary: Daftar Kelurahan/Desa di Kecamatan
+      description: Mengambil seluruh kelurahan/desa (kampung) di bawah kecamatan tertentu.
+      tags:
+        - Kecamatan
+        - Kelurahan
+      parameters:
+        - name: id
+          in: path
+          description: ID atau full_code kecamatan
+          required: true
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Cari nama kelurahan/desa
+          required: false
+          schema:
+            type: string
+        - name: pos_code
+          in: query
+          description: Filter kode pos
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Daftar kelurahan/desa berhasil diambil
+
+  /v1/kelurahan:
+    get:
+      summary: Daftar Seluruh Kelurahan/Desa
+      description: Mengambil data kelurahan/desa di Indonesia dengan pencarian dan filter kode pos.
+      tags:
+        - Kelurahan
+      parameters:
+        - name: kecamatan_id
+          in: query
+          description: Filter berdasarkan ID kecamatan induk
+          required: false
+          schema:
+            type: integer
+        - name: search
+          in: query
+          description: Cari nama kelurahan/desa
+          required: false
+          schema:
+            type: string
+        - name: full_code
+          in: query
+          description: Filter 10-digit full code (contoh: 9604032001)
+          required: false
+          schema:
+            type: string
+        - name: pos_code
+          in: query
+          description: Filter berdasarkan 5-digit kode pos (contoh: 98379, 10110)
+          required: false
+          schema:
+            type: string
+        - name: per_page
+          in: query
+          description: Jumlah data per halaman (default: 25)
+          required: false
+          schema:
+            type: integer
+            default: 25
+      responses:
+        '200':
+          description: Berhasil mengambil data kelurahan/desa
+
+  /v1/kelurahan/{id}:
+    get:
+      summary: Detail Kelurahan/Desa
+      description: Mengambil detail kelurahan/desa lengkap dengan hierarki relasi kecamatan, kabupaten, dan provinsi.
+      tags:
+        - Kelurahan
+      parameters:
+        - name: id
+          in: path
+          description: ID atau 10-digit full_code
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Detail kelurahan/desa ditemukan
+        '404':
+          description: Kelurahan/Desa tidak ditemukan

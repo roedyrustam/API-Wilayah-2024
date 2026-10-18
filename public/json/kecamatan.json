@@ -80,7 +80,7 @@
         "id": 12,
         "name": "Bamusbama",
         "code": "14",
-        "full_code": "920914",
+        "full_code": "960414",
         "kabupaten_id": 237
     },
     {
@@ -619,7 +619,7 @@
         "id": 89,
         "name": "Aitinyo",
         "code": "06",
-        "full_code": "921006",
+        "full_code": "960506",
         "kabupaten_id": 401
     },
     {
@@ -647,7 +647,7 @@
         "id": 93,
         "name": "Aitinyo Barat",
         "code": "05",
-        "full_code": "921005",
+        "full_code": "960505",
         "kabupaten_id": 401
     },
     {
@@ -668,7 +668,7 @@
         "id": 96,
         "name": "Aitinyo Raya",
         "code": "23",
-        "full_code": "921023",
+        "full_code": "960523",
         "kabupaten_id": 401
     },
     {
@@ -703,7 +703,7 @@
         "id": 101,
         "name": "Aitinyo Tengah",
         "code": "22",
-        "full_code": "921022",
+        "full_code": "960522",
         "kabupaten_id": 401
     },
     {
@@ -731,7 +731,7 @@
         "id": 105,
         "name": "Aitinyo Utara",
         "code": "07",
-        "full_code": "921007",
+        "full_code": "960507",
         "kabupaten_id": 401
     },
     {
@@ -1620,7 +1620,7 @@
         "id": 232,
         "name": "Botain",
         "code": "54",
-        "full_code": "920154",
+        "full_code": "960154",
         "kabupaten_id": 171
     },
     {
@@ -1781,7 +1781,7 @@
         "id": 255,
         "name": "Ayamaru",
         "code": "08",
-        "full_code": "921008",
+        "full_code": "960508",
         "kabupaten_id": 401
     },
     {
@@ -1830,7 +1830,7 @@
         "id": 262,
         "name": "Ayamaru Barat",
         "code": "21",
-        "full_code": "921021",
+        "full_code": "960521",
         "kabupaten_id": 401
     },
     {
@@ -1844,7 +1844,7 @@
         "id": 264,
         "name": "Ayamaru Jaya",
         "code": "16",
-        "full_code": "921016",
+        "full_code": "960516",
         "kabupaten_id": 401
     },
     {
@@ -1872,7 +1872,7 @@
         "id": 268,
         "name": "Ayamaru Selatan",
         "code": "15",
-        "full_code": "921015",
+        "full_code": "960515",
         "kabupaten_id": 401
     },
     {
@@ -1893,7 +1893,7 @@
         "id": 271,
         "name": "Ayamaru Selatan Jaya",
         "code": "17",
-        "full_code": "921017",
+        "full_code": "960517",
         "kabupaten_id": 401
     },
     {
@@ -1907,7 +1907,7 @@
         "id": 273,
         "name": "Ayamaru Tengah",
         "code": "20",
-        "full_code": "921020",
+        "full_code": "960520",
         "kabupaten_id": 401
     },
     {
@@ -1949,7 +1949,7 @@
         "id": 279,
         "name": "Ayamaru Timur",
         "code": "10",
-        "full_code": "921010",
+        "full_code": "960510",
         "kabupaten_id": 401
     },
     {
@@ -2005,7 +2005,7 @@
         "id": 287,
         "name": "Ayamaru Timur Selatan",
         "code": "18",
-        "full_code": "921018",
+        "full_code": "960518",
         "kabupaten_id": 401
     },
     {
@@ -2061,7 +2061,7 @@
         "id": 295,
         "name": "Ayamaru Utara",
         "code": "09",
-        "full_code": "921009",
+        "full_code": "960509",
         "kabupaten_id": 401
     },
     {
@@ -2075,7 +2075,7 @@
         "id": 297,
         "name": "Ayamaru Utara Timur",
         "code": "19",
-        "full_code": "921019",
+        "full_code": "960519",
         "kabupaten_id": 401
     },
     {
@@ -2089,7 +2089,7 @@
         "id": 299,
         "name": "Ayau",
         "code": "24",
-        "full_code": "920524",
+        "full_code": "960324",
         "kabupaten_id": 508
     },
     {
@@ -3097,7 +3097,7 @@
         "id": 443,
         "name": "Ases",
         "code": "15",
-        "full_code": "920915",
+        "full_code": "960415",
         "kabupaten_id": 237
     },
     {
@@ -3328,7 +3328,7 @@
         "id": 476,
         "name": "Buk",
         "code": "47",
-        "full_code": "920147",
+        "full_code": "960147",
         "kabupaten_id": 171
     },
     {
@@ -3692,7 +3692,7 @@
         "id": 528,
         "name": "Bikar",
         "code": "13",
-        "full_code": "920913",
+        "full_code": "960413",
         "kabupaten_id": 237
     },
     {
@@ -4385,7 +4385,7 @@
         "id": 627,
         "name": "Beraur",
         "code": "04",
-        "full_code": "920104",
+        "full_code": "960104",
         "kabupaten_id": 171
     },
     {
@@ -4910,7 +4910,7 @@
         "id": 702,
         "name": "Bagun",
         "code": "44",
-        "full_code": "920144",
+        "full_code": "960144",
         "kabupaten_id": 171
     },
     {
@@ -8564,7 +8564,7 @@
         "id": 1224,
         "name": "Ireres",
         "code": "17",
-        "full_code": "920917",
+        "full_code": "960417",
         "kabupaten_id": 237
     },
     {
@@ -9418,7 +9418,7 @@
         "id": 1346,
         "name": "Batanta Selatan",
         "code": "25",
-        "full_code": "920525",
+        "full_code": "960325",
         "kabupaten_id": 508
     },
     {
@@ -9544,7 +9544,7 @@
         "id": 1364,
         "name": "Batanta Utara",
         "code": "20",
-        "full_code": "920520",
+        "full_code": "960320",
         "kabupaten_id": 508
     },
     {
@@ -11147,7 +11147,7 @@
         "id": 1593,
         "name": "Inanwatan",
         "code": "04",
-        "full_code": "920404",
+        "full_code": "960204",
         "kabupaten_id": 174
     },
     {
@@ -12323,7 +12323,7 @@
         "id": 1761,
         "name": "Fef",
         "code": "01",
-        "full_code": "920901",
+        "full_code": "960401",
         "kabupaten_id": 237
     },
     {
@@ -12694,7 +12694,7 @@
         "id": 1814,
         "name": "Fokour",
         "code": "24",
-        "full_code": "920424",
+        "full_code": "960224",
         "kabupaten_id": 174
     },
     {
@@ -13093,7 +13093,7 @@
         "id": 1871,
         "name": "Hobard",
         "code": "52",
-        "full_code": "920152",
+        "full_code": "960152",
         "kabupaten_id": 171
     },
     {
@@ -15949,7 +15949,7 @@
         "id": 2279,
         "name": "Kepulauan Ayau",
         "code": "05",
-        "full_code": "920505",
+        "full_code": "960305",
         "kabupaten_id": 508
     },
     {
@@ -16222,7 +16222,7 @@
         "id": 2318,
         "name": "Kais",
         "code": "14",
-        "full_code": "920414",
+        "full_code": "960214",
         "kabupaten_id": 174
     },
     {
@@ -16278,7 +16278,7 @@
         "id": 2326,
         "name": "Kepulauan Sembilan",
         "code": "17",
-        "full_code": "920517",
+        "full_code": "960317",
         "kabupaten_id": 508
     },
     {
@@ -16299,7 +16299,7 @@
         "id": 2329,
         "name": "Kais Darat",
         "code": "26",
-        "full_code": "920426",
+        "full_code": "960226",
         "kabupaten_id": 174
     },
     {
@@ -17258,7 +17258,7 @@
         "id": 2466,
         "name": "Kota Waisai",
         "code": "18",
-        "full_code": "920518",
+        "full_code": "960318",
         "kabupaten_id": 508
     },
     {
@@ -17433,7 +17433,7 @@
         "id": 2491,
         "name": "Abun",
         "code": "06",
-        "full_code": "920906",
+        "full_code": "960406",
         "kabupaten_id": 237
     },
     {
@@ -17447,7 +17447,7 @@
         "id": 2493,
         "name": "Konda",
         "code": "15",
-        "full_code": "920415",
+        "full_code": "960215",
         "kabupaten_id": 174
     },
     {
@@ -17601,7 +17601,7 @@
         "id": 2515,
         "name": "Konhir",
         "code": "50",
-        "full_code": "920150",
+        "full_code": "960150",
         "kabupaten_id": 171
     },
     {
@@ -18728,7 +18728,7 @@
         "id": 2676,
         "name": "Amberbaken",
         "code": "10",
-        "full_code": "920910",
+        "full_code": "960410",
         "kabupaten_id": 237
     },
     {
@@ -19414,7 +19414,7 @@
         "id": 2774,
         "name": "Kasi",
         "code": "28",
-        "full_code": "920928",
+        "full_code": "960428",
         "kabupaten_id": 237
     },
     {
@@ -19575,7 +19575,7 @@
         "id": 2797,
         "name": "Aifat",
         "code": "01",
-        "full_code": "921001",
+        "full_code": "960501",
         "kabupaten_id": 401
     },
     {
@@ -19589,7 +19589,7 @@
         "id": 2799,
         "name": "Aifat Selatan",
         "code": "04",
-        "full_code": "921004",
+        "full_code": "960504",
         "kabupaten_id": 401
     },
     {
@@ -19610,7 +19610,7 @@
         "id": 2802,
         "name": "Aifat Timur",
         "code": "03",
-        "full_code": "921003",
+        "full_code": "960503",
         "kabupaten_id": 401
     },
     {
@@ -19624,7 +19624,7 @@
         "id": 2804,
         "name": "Aifat Timur Jauh",
         "code": "13",
-        "full_code": "921013",
+        "full_code": "960513",
         "kabupaten_id": 401
     },
     {
@@ -19638,7 +19638,7 @@
         "id": 2806,
         "name": "Aifat Timur Selatan",
         "code": "14",
-        "full_code": "921014",
+        "full_code": "960514",
         "kabupaten_id": 401
     },
     {
@@ -19687,7 +19687,7 @@
         "id": 2813,
         "name": "Aifat Timur Tengah",
         "code": "12",
-        "full_code": "921012",
+        "full_code": "960512",
         "kabupaten_id": 401
     },
     {
@@ -19736,7 +19736,7 @@
         "id": 2820,
         "name": "Aifat Utara",
         "code": "02",
-        "full_code": "921002",
+        "full_code": "960502",
         "kabupaten_id": 401
     },
     {
@@ -19820,7 +19820,7 @@
         "id": 2832,
         "name": "Aimas",
         "code": "07",
-        "full_code": "920107",
+        "full_code": "960107",
         "kabupaten_id": 171
     },
     {
@@ -19911,7 +19911,7 @@
         "id": 2845,
         "name": "Kokoda",
         "code": "09",
-        "full_code": "920409",
+        "full_code": "960209",
         "kabupaten_id": 174
     },
     {
@@ -20016,7 +20016,7 @@
         "id": 2860,
         "name": "Klabot",
         "code": "17",
-        "full_code": "920117",
+        "full_code": "960117",
         "kabupaten_id": 171
     },
     {
@@ -20065,7 +20065,7 @@
         "id": 2867,
         "name": "Amberbaken Barat",
         "code": "27",
-        "full_code": "920927",
+        "full_code": "960427",
         "kabupaten_id": 237
     },
     {
@@ -20198,7 +20198,7 @@
         "id": 2886,
         "name": "Klamono",
         "code": "08",
-        "full_code": "920108",
+        "full_code": "960108",
         "kabupaten_id": 171
     },
     {
@@ -20926,7 +20926,7 @@
         "id": 2990,
         "name": "Klasafet",
         "code": "51",
-        "full_code": "920151",
+        "full_code": "960151",
         "kabupaten_id": 171
     },
     {
@@ -20954,7 +20954,7 @@
         "id": 2994,
         "name": "Klaso",
         "code": "41",
-        "full_code": "920141",
+        "full_code": "960141",
         "kabupaten_id": 171
     },
     {
@@ -21073,7 +21073,7 @@
         "id": 3011,
         "name": "Matemani",
         "code": "20",
-        "full_code": "920420",
+        "full_code": "960220",
         "kabupaten_id": 174
     },
     {
@@ -21101,7 +21101,7 @@
         "id": 3015,
         "name": "Kokoda Utara",
         "code": "21",
-        "full_code": "920421",
+        "full_code": "960221",
         "kabupaten_id": 174
     },
     {
@@ -21234,7 +21234,7 @@
         "id": 3034,
         "name": "Klaurung",
         "code": "08",
-        "full_code": "927108",
+        "full_code": "967108",
         "kabupaten_id": 173
     },
     {
@@ -21283,7 +21283,7 @@
         "id": 3041,
         "name": "Klawak",
         "code": "18",
-        "full_code": "920118",
+        "full_code": "960118",
         "kabupaten_id": 171
     },
     {
@@ -21381,14 +21381,14 @@
         "id": 3055,
         "name": "Miyah Selatan",
         "code": "16",
-        "full_code": "920916",
+        "full_code": "960416",
         "kabupaten_id": 237
     },
     {
         "id": 3056,
         "name": "Maudus",
         "code": "20",
-        "full_code": "920120",
+        "full_code": "960120",
         "kabupaten_id": 171
     },
     {
@@ -21409,7 +21409,7 @@
         "id": 3059,
         "name": "Klayili",
         "code": "40",
-        "full_code": "920140",
+        "full_code": "960140",
         "kabupaten_id": 171
     },
     {
@@ -21955,7 +21955,7 @@
         "id": 3137,
         "name": "Mawabuan",
         "code": "22",
-        "full_code": "920922",
+        "full_code": "960422",
         "kabupaten_id": 237
     },
     {
@@ -22235,7 +22235,7 @@
         "id": 3177,
         "name": "Mayamuk",
         "code": "13",
-        "full_code": "920113",
+        "full_code": "960113",
         "kabupaten_id": 171
     },
     {
@@ -22669,7 +22669,7 @@
         "id": 3239,
         "name": "Moisegen",
         "code": "42",
-        "full_code": "920142",
+        "full_code": "960142",
         "kabupaten_id": 171
     },
     {
@@ -22907,7 +22907,7 @@
         "id": 3273,
         "name": "Kwesefo",
         "code": "21",
-        "full_code": "920921",
+        "full_code": "960421",
         "kabupaten_id": 237
     },
     {
@@ -23131,7 +23131,7 @@
         "id": 3305,
         "name": "Kwoor",
         "code": "04",
-        "full_code": "920904",
+        "full_code": "960404",
         "kabupaten_id": 237
     },
     {
@@ -23537,7 +23537,7 @@
         "id": 3363,
         "name": "Mare",
         "code": "11",
-        "full_code": "921011",
+        "full_code": "960511",
         "kabupaten_id": 401
     },
     {
@@ -23635,7 +23635,7 @@
         "id": 3377,
         "name": "Mare Selatan",
         "code": "24",
-        "full_code": "921024",
+        "full_code": "960524",
         "kabupaten_id": 401
     },
     {
@@ -23908,7 +23908,7 @@
         "id": 3416,
         "name": "Meos Mansar",
         "code": "11",
-        "full_code": "920511",
+        "full_code": "960311",
         "kabupaten_id": 508
     },
     {
@@ -24188,14 +24188,14 @@
         "id": 3456,
         "name": "Mariat",
         "code": "39",
-        "full_code": "920139",
+        "full_code": "960139",
         "kabupaten_id": 171
     },
     {
         "id": 3457,
         "name": "Kebar",
         "code": "09",
-        "full_code": "920909",
+        "full_code": "960409",
         "kabupaten_id": 237
     },
     {
@@ -24244,7 +24244,7 @@
         "id": 3464,
         "name": "Kebar Selatan",
         "code": "24",
-        "full_code": "920924",
+        "full_code": "960424",
         "kabupaten_id": 237
     },
     {
@@ -24300,7 +24300,7 @@
         "id": 3472,
         "name": "Kebar Timur",
         "code": "23",
-        "full_code": "920923",
+        "full_code": "960423",
         "kabupaten_id": 237
     },
     {
@@ -24734,7 +24734,7 @@
         "id": 3534,
         "name": "Kofiau",
         "code": "10",
-        "full_code": "920510",
+        "full_code": "960310",
         "kabupaten_id": 508
     },
     {
@@ -25210,7 +25210,7 @@
         "id": 3602,
         "name": "Makbon",
         "code": "01",
-        "full_code": "920101",
+        "full_code": "960101",
         "kabupaten_id": 171
     },
     {
@@ -26022,7 +26022,7 @@
         "id": 3718,
         "name": "Moraid",
         "code": "08",
-        "full_code": "920908",
+        "full_code": "960408",
         "kabupaten_id": 237
     },
     {
@@ -26687,7 +26687,7 @@
         "id": 3813,
         "name": "Malabotom",
         "code": "49",
-        "full_code": "920149",
+        "full_code": "960149",
         "kabupaten_id": 171
     },
     {
@@ -26904,14 +26904,14 @@
         "id": 3844,
         "name": "Maladum Mes",
         "code": "10",
-        "full_code": "927110",
+        "full_code": "967110",
         "kabupaten_id": 173
     },
     {
         "id": 3845,
         "name": "Malaimsimsa",
         "code": "09",
-        "full_code": "927109",
+        "full_code": "967109",
         "kabupaten_id": 173
     },
     {
@@ -27611,7 +27611,7 @@
         "id": 3945,
         "name": "Misool (Misool Utara)",
         "code": "01",
-        "full_code": "920501",
+        "full_code": "960301",
         "kabupaten_id": 508
     },
     {
@@ -27625,7 +27625,7 @@
         "id": 3947,
         "name": "Moswaren",
         "code": "10",
-        "full_code": "920410",
+        "full_code": "960210",
         "kabupaten_id": 174
     },
     {
@@ -27730,7 +27730,7 @@
         "id": 3962,
         "name": "Misool Barat",
         "code": "16",
-        "full_code": "920516",
+        "full_code": "960316",
         "kabupaten_id": 508
     },
     {
@@ -27905,7 +27905,7 @@
         "id": 3987,
         "name": "Misool Selatan",
         "code": "13",
-        "full_code": "920513",
+        "full_code": "960313",
         "kabupaten_id": 508
     },
     {
@@ -27989,7 +27989,7 @@
         "id": 3999,
         "name": "Misool Timur",
         "code": "06",
-        "full_code": "920506",
+        "full_code": "960306",
         "kabupaten_id": 508
     },
     {
@@ -28094,7 +28094,7 @@
         "id": 4014,
         "name": "Miyah",
         "code": "02",
-        "full_code": "920902",
+        "full_code": "960402",
         "kabupaten_id": 237
     },
     {
@@ -29067,7 +29067,7 @@
         "id": 4153,
         "name": "Mpur",
         "code": "26",
-        "full_code": "920926",
+        "full_code": "960426",
         "kabupaten_id": 237
     },
     {
@@ -29179,7 +29179,7 @@
         "id": 4169,
         "name": "Manekar",
         "code": "25",
-        "full_code": "920925",
+        "full_code": "960425",
         "kabupaten_id": 237
     },
     {
@@ -31258,7 +31258,7 @@
         "id": 4466,
         "name": "Mubrani",
         "code": "12",
-        "full_code": "920912",
+        "full_code": "960412",
         "kabupaten_id": 237
     },
     {
@@ -34387,7 +34387,7 @@
         "id": 4913,
         "name": "Salawati",
         "code": "05",
-        "full_code": "920105",
+        "full_code": "960105",
         "kabupaten_id": 171
     },
     {
@@ -34436,7 +34436,7 @@
         "id": 4920,
         "name": "Salawati Barat",
         "code": "21",
-        "full_code": "920521",
+        "full_code": "960321",
         "kabupaten_id": 508
     },
     {
@@ -34569,7 +34569,7 @@
         "id": 4939,
         "name": "Salawati Selatan",
         "code": "14",
-        "full_code": "920114",
+        "full_code": "960114",
         "kabupaten_id": 171
     },
     {
@@ -34639,7 +34639,7 @@
         "id": 4949,
         "name": "Salawati Tengah",
         "code": "22",
-        "full_code": "920522",
+        "full_code": "960322",
         "kabupaten_id": 508
     },
     {
@@ -34674,7 +34674,7 @@
         "id": 4954,
         "name": "Salawati Tengah",
         "code": "53",
-        "full_code": "920153",
+        "full_code": "960153",
         "kabupaten_id": 171
     },
     {
@@ -34716,7 +34716,7 @@
         "id": 4960,
         "name": "Salawati Utara",
         "code": "04",
-        "full_code": "920504",
+        "full_code": "960304",
         "kabupaten_id": 508
     },
     {
@@ -34961,7 +34961,7 @@
         "id": 4995,
         "name": "Sausapor",
         "code": "05",
-        "full_code": "920905",
+        "full_code": "960405",
         "kabupaten_id": 237
     },
     {
@@ -34975,7 +34975,7 @@
         "id": 4997,
         "name": "Salkma",
         "code": "25",
-        "full_code": "920425",
+        "full_code": "960225",
         "kabupaten_id": 174
     },
     {
@@ -35500,7 +35500,7 @@
         "id": 5072,
         "name": "Sawiat",
         "code": "06",
-        "full_code": "920406",
+        "full_code": "960206",
         "kabupaten_id": 174
     },
     {
@@ -35948,7 +35948,7 @@
         "id": 5136,
         "name": "Sayosa",
         "code": "10",
-        "full_code": "920110",
+        "full_code": "960110",
         "kabupaten_id": 171
     },
     {
@@ -35997,7 +35997,7 @@
         "id": 5143,
         "name": "Sayosa Timur",
         "code": "55",
-        "full_code": "920155",
+        "full_code": "960155",
         "kabupaten_id": 171
     },
     {
@@ -38573,7 +38573,7 @@
         "id": 5511,
         "name": "Seget",
         "code": "06",
-        "full_code": "920106",
+        "full_code": "960106",
         "kabupaten_id": 171
     },
     {
@@ -38615,7 +38615,7 @@
         "id": 5517,
         "name": "Saengkeduk",
         "code": "48",
-        "full_code": "920148",
+        "full_code": "960148",
         "kabupaten_id": 171
     },
     {
@@ -38825,7 +38825,7 @@
         "id": 5547,
         "name": "Segun",
         "code": "12",
-        "full_code": "920112",
+        "full_code": "960112",
         "kabupaten_id": 171
     },
     {
@@ -39161,7 +39161,7 @@
         "id": 5595,
         "name": "Saifi",
         "code": "22",
-        "full_code": "920422",
+        "full_code": "960222",
         "kabupaten_id": 174
     },
     {
@@ -39378,7 +39378,7 @@
         "id": 5626,
         "name": "Syujak",
         "code": "07",
-        "full_code": "920907",
+        "full_code": "960407",
         "kabupaten_id": 237
     },
     {
@@ -39616,7 +39616,7 @@
         "id": 5660,
         "name": "Sunook",
         "code": "46",
-        "full_code": "920146",
+        "full_code": "960146",
         "kabupaten_id": 171
     },
     {
@@ -39770,7 +39770,7 @@
         "id": 5682,
         "name": "Selemkai",
         "code": "29",
-        "full_code": "920929",
+        "full_code": "960429",
         "kabupaten_id": 237
     },
     {
@@ -40449,7 +40449,7 @@
         "id": 5779,
         "name": "Supnin",
         "code": "23",
-        "full_code": "920523",
+        "full_code": "960323",
         "kabupaten_id": 508
     },
     {
@@ -41814,7 +41814,7 @@
         "id": 5974,
         "name": "Sorong",
         "code": "43",
-        "full_code": "920143",
+        "full_code": "960143",
         "kabupaten_id": 171
     },
     {
@@ -42038,7 +42038,7 @@
         "id": 6006,
         "name": "Sorong",
         "code": "01",
-        "full_code": "927101",
+        "full_code": "967101",
         "kabupaten_id": 173
     },
     {
@@ -42150,7 +42150,7 @@
         "id": 6022,
         "name": "Sorong Barat",
         "code": "03",
-        "full_code": "927103",
+        "full_code": "967103",
         "kabupaten_id": 173
     },
     {
@@ -42227,7 +42227,7 @@
         "id": 6033,
         "name": "Sorong Kepulauan",
         "code": "04",
-        "full_code": "927104",
+        "full_code": "967104",
         "kabupaten_id": 173
     },
     {
@@ -42262,7 +42262,7 @@
         "id": 6038,
         "name": "Sorong Kota",
         "code": "07",
-        "full_code": "927107",
+        "full_code": "967107",
         "kabupaten_id": 173
     },
     {
@@ -42374,7 +42374,7 @@
         "id": 6054,
         "name": "Sorong Manoi",
         "code": "06",
-        "full_code": "927106",
+        "full_code": "967106",
         "kabupaten_id": 173
     },
     {
@@ -42605,7 +42605,7 @@
         "id": 6087,
         "name": "Sorong Timur",
         "code": "02",
-        "full_code": "927102",
+        "full_code": "967102",
         "kabupaten_id": 173
     },
     {
@@ -42668,7 +42668,7 @@
         "id": 6096,
         "name": "Sorong Utara",
         "code": "05",
-        "full_code": "927105",
+        "full_code": "967105",
         "kabupaten_id": 173
     },
     {
@@ -44166,7 +44166,7 @@
         "id": 6310,
         "name": "Senopi",
         "code": "11",
-        "full_code": "920911",
+        "full_code": "960411",
         "kabupaten_id": 237
     },
     {
@@ -44866,7 +44866,7 @@
         "id": 6410,
         "name": "Seremuk",
         "code": "11",
-        "full_code": "920411",
+        "full_code": "960211",
         "kabupaten_id": 174
     },
     {
@@ -44915,7 +44915,7 @@
         "id": 6417,
         "name": "Tinggouw",
         "code": "20",
-        "full_code": "920920",
+        "full_code": "960420",
         "kabupaten_id": 237
     },
     {
@@ -45454,7 +45454,7 @@
         "id": 6494,
         "name": "Tiplol Mayalibit",
         "code": "19",
-        "full_code": "920519",
+        "full_code": "960319",
         "kabupaten_id": 508
     },
     {
@@ -46756,7 +46756,7 @@
         "id": 6680,
         "name": "Teluk Mayalibit",
         "code": "09",
-        "full_code": "920509",
+        "full_code": "960309",
         "kabupaten_id": 508
     },
     {
@@ -47554,7 +47554,7 @@
         "id": 6794,
         "name": "Wayer",
         "code": "12",
-        "full_code": "920412",
+        "full_code": "960212",
         "kabupaten_id": 174
     },
     {
@@ -47631,7 +47631,7 @@
         "id": 6805,
         "name": "Wilhem Roumbouts",
         "code": "19",
-        "full_code": "920919",
+        "full_code": "960419",
         "kabupaten_id": 237
     },
     {
@@ -49003,7 +49003,7 @@
         "id": 7001,
         "name": "Tobouw",
         "code": "18",
-        "full_code": "920918",
+        "full_code": "960418",
         "kabupaten_id": 237
     },
     {
@@ -49304,7 +49304,7 @@
         "id": 7044,
         "name": "Waigeo Barat",
         "code": "07",
-        "full_code": "920507",
+        "full_code": "960307",
         "kabupaten_id": 508
     },
     {
@@ -49388,7 +49388,7 @@
         "id": 7056,
         "name": "Waigeo Barat Kepulauan",
         "code": "15",
-        "full_code": "920515",
+        "full_code": "960315",
         "kabupaten_id": 508
     },
     {
@@ -49444,7 +49444,7 @@
         "id": 7064,
         "name": "Waigeo Selatan",
         "code": "03",
-        "full_code": "920503",
+        "full_code": "960303",
         "kabupaten_id": 508
     },
     {
@@ -49521,7 +49521,7 @@
         "id": 7075,
         "name": "Teminabuan",
         "code": "01",
-        "full_code": "920401",
+        "full_code": "960201",
         "kabupaten_id": 174
     },
     {
@@ -49598,7 +49598,7 @@
         "id": 7086,
         "name": "Waigeo Timur",
         "code": "08",
-        "full_code": "920508",
+        "full_code": "960308",
         "kabupaten_id": 508
     },
     {
@@ -49654,7 +49654,7 @@
         "id": 7094,
         "name": "Waigeo Utara",
         "code": "02",
-        "full_code": "920502",
+        "full_code": "960302",
         "kabupaten_id": 508
     },
     {
@@ -50158,7 +50158,7 @@
         "id": 7166,
         "name": "Yembun",
         "code": "03",
-        "full_code": "920903",
+        "full_code": "960403",
         "kabupaten_id": 237
     },
     {
@@ -50200,7 +50200,7 @@
         "id": 7172,
         "name": "Wemak",
         "code": "45",
-        "full_code": "920145",
+        "full_code": "960145",
         "kabupaten_id": 171
     },
     {
@@ -50599,7 +50599,7 @@
         "id": 7229,
         "name": "Warwarbomi",
         "code": "14",
-        "full_code": "920514",
+        "full_code": "960314",
         "kabupaten_id": 508
     },
     {

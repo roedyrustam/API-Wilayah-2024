@@ -12,7 +12,10 @@ class Kabupaten extends Model
     use HasFactory;
     protected $fillable = [
         'provinsi_id',
-        'name'
+        'type',
+        'name',
+        'code',
+        'full_code',
     ];
 
     public function provinsi(): BelongsTo

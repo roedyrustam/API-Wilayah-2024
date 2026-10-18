@@ -26,9 +26,10 @@ class KelurahanResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('kecamatan_id')
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('kecamatan_id')
+                    ->relationship('kecamatan', 'name')
+                    ->searchable()
+                    ->required(),
                 Forms\Components\TextInput::make('code')
                     ->required()
                     ->maxLength(255),
@@ -48,9 +49,10 @@ class KelurahanResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('kecamatan_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('id')->sortable(),
+                Tables\Columns\TextColumn::make('kecamatan.name')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('code')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('name')

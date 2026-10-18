@@ -28,6 +28,27 @@ class FromJsonSeeder extends Seeder
         $data_kec = json_decode($json_kec, true);
         $data_kel = json_decode($json_kel, true);
 
+        $now = now();
+        $addTimestamps = function (&$items) use ($now) {
+            foreach ($items as &$item) {
+                $item['created_at'] = $now;
+                $item['updated_at'] = $now;
+            }
+        };
+
+        $addTimestamps($data_prov);
+        $addTimestamps($data_kab);
+        $addTimestamps($data_kec);
+        $addTimestamps($data_kel);
+
+        echo "Mengosongkan tabel wilayah sebelumnya...\n";
+        \Illuminate\Support\Facades\Schema::disableForeignKeyConstraints();
+        DB::table('kelurahans')->truncate();
+        DB::table('kecamatans')->truncate();
+        DB::table('kabupatens')->truncate();
+        DB::table('provinsis')->truncate();
+        \Illuminate\Support\Facades\Schema::enableForeignKeyConstraints();
+
         echo "Memulai proses seeder data Provinsi...\n";
         DB::table('provinsis')->insert($data_prov);
         echo "Done seeder data Provinsi...\n";
@@ -38,16 +59,18 @@ class FromJsonSeeder extends Seeder
 
         $chunk_kec = array_chunk($data_kec, 1000);
         foreach ($chunk_kec as $key => $chunk) {
-            echo "Memulai proses seeder data Kecamatan... ke " . $key + 1 . "000\n";
+            $step = ($key + 1) * 1000;
+            echo "Memulai proses seeder data Kecamatan... ke-{$step}\n";
             DB::table('kecamatans')->insert($chunk);
-            echo "Done seeder data Kecamatan... ke " . $key + 1 . "000\n";
+            echo "Done seeder data Kecamatan... ke-{$step}\n";
         }
 
         $chunk_kel = array_chunk($data_kel, 1000);
         foreach ($chunk_kel as $key => $chunk) {
-            echo "Memulai proses seeder data Kelurahan... ke " . $key + 1 . "000\n";
+            $step = ($key + 1) * 1000;
+            echo "Memulai proses seeder data Kelurahan... ke-{$step}\n";
             DB::table('kelurahans')->insert($chunk);
-            echo "Done seeder data Kelurahan... ke " . $key + 1 . "000\n";
+            echo "Done seeder data Kelurahan... ke-{$step}\n";
         }
     }
 }
