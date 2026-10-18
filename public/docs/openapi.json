@@ -16,12 +16,16 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000/api",
-            "description": "Local Development Server"
+            "url": "/api",
+            "description": "Production Server (apiwilayah2026.vercel.app)"
         },
         {
-            "url": "/api",
-            "description": "Current Host Relative"
+            "url": "https://apiwilayah2026.vercel.app/api",
+            "description": "Production Public HTTPS API"
+        },
+        {
+            "url": "http://127.0.0.1:8000/api",
+            "description": "Local Development Server (127.0.0.1:8000)"
         }
     ],
     "paths": {
