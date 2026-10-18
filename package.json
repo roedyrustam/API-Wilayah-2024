@@ -1,16 +1,56 @@
 {
     "name": "api-wilayah-indonesia-2026",
-    "version": "2.0.0",
-    "description": "API Wilayah Administratif Indonesia 2026 (Kemendagri Standard) - 38 Provinsi, 514 Kab/Kota, 7.277 Kecamatan, 83.763 Kelurahan/Desa",
+    "version": "3.2.0",
+    "description": "Client SDK & Master Data Wilayah Administratif Indonesia 2026 (Standar Kemendagri: 38 Provinsi, 514 Kab/Kota, 7.277 Kecamatan, 83.763 Kelurahan/Desa)",
+    "keywords": [
+        "wilayah-indonesia",
+        "kemendagri",
+        "provinsi",
+        "kabupaten",
+        "kota",
+        "kecamatan",
+        "kelurahan",
+        "desa",
+        "kode-pos",
+        "indonesia",
+        "api-wilayah",
+        "geojson",
+        "sdk"
+    ],
     "author": "Roedy Rustam <roedyrustam@gmail.com> (https://github.com/roedyrustam)",
+    "homepage": "https://apiwilayah2026.vercel.app",
     "repository": {
         "type": "git",
         "url": "https://github.com/roedyrustam/API-Wilayah-2024.git"
     },
-    "homepage": "https://apiwilayah2026.vercel.app",
+    "bugs": {
+        "url": "https://github.com/roedyrustam/API-Wilayah-2024/issues"
+    },
     "license": "MIT",
-    "private": true,
     "type": "module",
+    "main": "./public/sdk/api-wilayah.js",
+    "module": "./public/sdk/api-wilayah.esm.js",
+    "types": "./public/sdk/api-wilayah.d.ts",
+    "exports": {
+        ".": {
+            "types": "./public/sdk/api-wilayah.d.ts",
+            "import": "./public/sdk/api-wilayah.esm.js",
+            "require": "./public/sdk/api-wilayah.js",
+            "default": "./public/sdk/api-wilayah.esm.js"
+        },
+        "./data/provinsi": "./public/json/provinsi.json",
+        "./data/kabupaten": "./public/json/kabupaten.json",
+        "./data/kecamatan": "./public/json/kecamatan.json",
+        "./data/kelurahan": "./public/json/kelurahan.json",
+        "./openapi.json": "./public/docs/openapi.json"
+    },
+    "files": [
+        "public/sdk",
+        "public/json",
+        "public/docs/openapi.json",
+        "README.md",
+        "LICENSE"
+    ],
     "scripts": {
         "dev": "vite",
         "build": "vite build"
