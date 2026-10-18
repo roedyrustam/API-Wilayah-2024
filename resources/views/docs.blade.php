@@ -595,6 +595,74 @@
             padding: 14px !important;
         }
 
+        .swagger-ui .opblock .opblock-summary-path a {
+            color: #ffffff !important;
+        }
+
+        .swagger-ui select option {
+            background: #0f172a !important;
+            color: #f8fafc !important;
+        }
+
+        .swagger-ui .response-col_description {
+            color: #cbd5e1 !important;
+        }
+
+        .swagger-ui .model-title {
+            color: #f8fafc !important;
+            font-weight: 700 !important;
+        }
+
+        .swagger-ui .model {
+            color: #cbd5e1 !important;
+            font-family: var(--font-mono) !important;
+        }
+
+        .swagger-ui .prop-name {
+            color: var(--cyan) !important;
+        }
+
+        .swagger-ui .prop-type {
+            color: #c084fc !important;
+        }
+
+        .swagger-ui .tabli button.tablinks {
+            color: var(--text-muted) !important;
+            font-weight: 600 !important;
+        }
+
+        .swagger-ui .tabli.active button.tablinks {
+            color: var(--cyan) !important;
+            border-bottom: 2px solid var(--cyan) !important;
+        }
+
+        .swagger-ui section.models {
+            border: 1px solid var(--border) !important;
+            border-radius: 10px !important;
+            background: rgba(15, 23, 42, 0.6) !important;
+            margin-top: 24px !important;
+        }
+
+        .swagger-ui section.models h4 {
+            color: #ffffff !important;
+        }
+
+        .swagger-ui .model-toggle {
+            filter: invert(1) !important;
+        }
+
+        .swagger-ui .arrow {
+            fill: #94a3b8 !important;
+        }
+
+        .swagger-ui .download-contents {
+            background: rgba(56, 189, 248, 0.1) !important;
+            border: 1px solid rgba(56, 189, 248, 0.3) !important;
+            color: var(--cyan) !important;
+            border-radius: 6px !important;
+            font-weight: 600 !important;
+        }
+
         .swagger-ui .model-box {
             background: #0b0f19 !important;
         }
@@ -663,11 +731,23 @@
         </a>
 
         <div class="nav-actions">
+            <!-- Active indicator for Docs -->
+            <a href="/api/documentation" class="btn-primary">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                API Documentation
+            </a>
+
+            <!-- Live Playground Button -->
+            <a href="/demo" class="btn-nav">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Live Playground
+            </a>
+
             <!-- Dropdown Master JSON -->
             <div class="dropdown">
                 <button type="button" class="btn-nav">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
-                    Master Data JSON
+                    Master JSON
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
                 </button>
                 <div class="dropdown-content">
@@ -694,12 +774,6 @@
             <!-- Filament Admin Button -->
             <a href="/admin" class="btn-nav">
                 Filament Admin
-            </a>
-
-            <!-- Live Playground Button -->
-            <a href="/demo" class="btn-primary">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                Live Playground
             </a>
 
             <!-- GitHub Button -->
