@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.0.3
 info:
-  title: API Wilayah Indonesia 2026
+  title: "API Wilayah Indonesia 2026"
   description: >
     Dokumentasi resmi REST API Wilayah Administratif Republik Indonesia edisi 2026.
     Mencakup data terkini 38 Provinsi (termasuk Daerah Khusus Jakarta dan 4 DOB Papua:
@@ -12,46 +12,46 @@ info:
     url: https://github.com/roedyrustam
 servers:
   - url: http://127.0.0.1:8000/api
-    description: Local Development Server
+    description: "Local Development Server"
   - url: /api
-    description: Current Host Relative
+    description: "Current Host Relative"
 
 paths:
   /v1/provinsi:
     get:
-      summary: Daftar Provinsi
-      description: Mengambil seluruh data 38 provinsi di Indonesia dengan dukungan pencarian dan pagination.
+      summary: "Daftar Provinsi"
+      description: "Mengambil seluruh data 38 provinsi di Indonesia dengan dukungan pencarian dan pagination."
       tags:
         - Provinsi
       parameters:
         - name: search
           in: query
-          description: Cari berdasarkan nama provinsi (contoh: Papua, Jawa, Jakarta)
+          description: "Cari berdasarkan nama provinsi (contoh: Papua, Jawa, Jakarta)"
           required: false
           schema:
             type: string
         - name: code
           in: query
-          description: Filter berdasarkan 2-digit kode provinsi (contoh: 11, 31, 96)
+          description: "Filter berdasarkan 2-digit kode provinsi (contoh: 11, 31, 96)"
           required: false
           schema:
             type: string
         - name: paginate
           in: query
-          description: Set true untuk mengaktifkan pagination (default: false)
+          description: "Set true untuk mengaktifkan pagination (default: false)"
           required: false
           schema:
             type: boolean
         - name: per_page
           in: query
-          description: Jumlah data per halaman jika paginate=true (maksimal 100)
+          description: "Jumlah data per halaman jika paginate=true (maksimal 100)"
           required: false
           schema:
             type: integer
             default: 15
       responses:
         '200':
-          description: Berhasil mengambil data provinsi
+          description: "Berhasil mengambil data provinsi"
           content:
             application/json:
               example:
@@ -69,335 +69,335 @@ paths:
 
   /v1/provinsi/{id}:
     get:
-      summary: Detail Provinsi
-      description: Mengambil detail provinsi berdasarkan ID numerik atau 2-digit kode provinsi (contoh: 26 atau 96).
+      summary: "Detail Provinsi"
+      description: "Mengambil detail provinsi berdasarkan ID numerik atau 2-digit kode provinsi (contoh: 26 atau 96)."
       tags:
         - Provinsi
       parameters:
         - name: id
           in: path
-          description: ID database atau kode provinsi (contoh: 26 atau 96)
+          description: "ID database atau kode provinsi (contoh: 26 atau 96)"
           required: true
           schema:
             type: string
       responses:
         '200':
-          description: Detail provinsi ditemukan
+          description: "Detail provinsi ditemukan"
         '404':
-          description: Provinsi tidak ditemukan
+          description: "Provinsi tidak ditemukan"
 
   /v1/provinsi/{id}/kabupaten:
     get:
-      summary: Daftar Kabupaten/Kota di Provinsi
-      description: Mengambil semua kabupaten/kota di bawah provinsi tertentu.
+      summary: "Daftar Kabupaten/Kota di Provinsi"
+      description: "Mengambil semua kabupaten/kota di bawah provinsi tertentu."
       tags:
         - Provinsi
         - Kabupaten
       parameters:
         - name: id
           in: path
-          description: ID atau kode provinsi (contoh: 26 atau 96)
+          description: "ID atau kode provinsi (contoh: 26 atau 96)"
           required: true
           schema:
             type: string
         - name: search
           in: query
-          description: Cari nama kabupaten/kota
+          description: "Cari nama kabupaten/kota"
           required: false
           schema:
             type: string
         - name: type
           in: query
-          description: Filter tipe (Kabupaten atau Kota)
+          description: "Filter tipe (Kabupaten atau Kota)"
           required: false
           schema:
             type: string
             enum: [Kabupaten, Kota]
       responses:
         '200':
-          description: Daftar kabupaten/kota berhasil diambil
+          description: "Daftar kabupaten/kota berhasil diambil"
 
   /v1/kabupaten:
     get:
-      summary: Daftar Seluruh Kabupaten/Kota
-      description: Mengambil data 514 kabupaten/kota di Indonesia dengan filter provinsi, tipe, dan pencarian.
+      summary: "Daftar Seluruh Kabupaten/Kota"
+      description: "Mengambil data 514 kabupaten/kota di Indonesia dengan filter provinsi, tipe, dan pencarian."
       tags:
         - Kabupaten
       parameters:
         - name: provinsi_id
           in: query
-          description: Filter berdasarkan ID provinsi induk
+          description: "Filter berdasarkan ID provinsi induk"
           required: false
           schema:
             type: integer
         - name: search
           in: query
-          description: Cari nama kabupaten/kota
+          description: "Cari nama kabupaten/kota"
           required: false
           schema:
             type: string
         - name: full_code
           in: query
-          description: Filter berdasarkan 4-digit full code (contoh: 9601, 3171)
+          description: "Filter berdasarkan 4-digit full code (contoh: 9601, 3171)"
           required: false
           schema:
             type: string
         - name: type
           in: query
-          description: Filter tipe wilayah
+          description: "Filter tipe wilayah"
           required: false
           schema:
             type: string
             enum: [Kabupaten, Kota]
         - name: paginate
           in: query
-          description: Set true untuk pagination
+          description: "Set true untuk pagination"
           required: false
           schema:
             type: boolean
       responses:
         '200':
-          description: Berhasil mengambil data kabupaten/kota
+          description: "Berhasil mengambil data kabupaten/kota"
 
   /v1/kabupaten/{id}:
     get:
-      summary: Detail Kabupaten/Kota
-      description: Mengambil detail kabupaten/kota berdasarkan ID atau 4-digit kode wilayah.
+      summary: "Detail Kabupaten/Kota"
+      description: "Mengambil detail kabupaten/kota berdasarkan ID atau 4-digit kode wilayah."
       tags:
         - Kabupaten
       parameters:
         - name: id
           in: path
-          description: ID atau full_code (contoh: 171 atau 9601)
+          description: "ID atau full_code (contoh: 171 atau 9601)"
           required: true
           schema:
             type: string
       responses:
         '200':
-          description: Detail kabupaten/kota ditemukan
+          description: "Detail kabupaten/kota ditemukan"
         '404':
-          description: Kabupaten/Kota tidak ditemukan
+          description: "Kabupaten/Kota tidak ditemukan"
 
   /v1/kabupaten/{id}/kecamatan:
     get:
-      summary: Daftar Kecamatan di Kabupaten/Kota
-      description: Mengambil seluruh kecamatan (distrik) di bawah kabupaten/kota tertentu.
+      summary: "Daftar Kecamatan di Kabupaten/Kota"
+      description: "Mengambil seluruh kecamatan (distrik) di bawah kabupaten/kota tertentu."
       tags:
         - Kabupaten
         - Kecamatan
       parameters:
         - name: id
           in: path
-          description: ID atau full_code kabupaten (contoh: 171 atau 9601)
+          description: "ID atau full_code kabupaten (contoh: 171 atau 9601)"
           required: true
           schema:
             type: string
         - name: search
           in: query
-          description: Cari nama kecamatan
+          description: "Cari nama kecamatan"
           required: false
           schema:
             type: string
       responses:
         '200':
-          description: Daftar kecamatan berhasil diambil
+          description: "Daftar kecamatan berhasil diambil"
 
   /v1/kecamatan:
     get:
-      summary: Daftar Seluruh Kecamatan
-      description: Mengambil data kecamatan (distrik) di Indonesia dengan pagination (default: 25 per halaman).
+      summary: "Daftar Seluruh Kecamatan"
+      description: "Mengambil data kecamatan (distrik) di Indonesia dengan pagination (default: 25 per halaman)."
       tags:
         - Kecamatan
       parameters:
         - name: kabupaten_id
           in: query
-          description: Filter berdasarkan ID kabupaten induk
+          description: "Filter berdasarkan ID kabupaten induk"
           required: false
           schema:
             type: integer
         - name: search
           in: query
-          description: Cari nama kecamatan
+          description: "Cari nama kecamatan"
           required: false
           schema:
             type: string
         - name: full_code
           in: query
-          description: Filter 6-digit full code (contoh: 960101)
+          description: "Filter 6-digit full code (contoh: 960101)"
           required: false
           schema:
             type: string
         - name: per_page
           in: query
-          description: Jumlah data per halaman (default: 25)
+          description: "Jumlah data per halaman (default: 25)"
           required: false
           schema:
             type: integer
             default: 25
       responses:
         '200':
-          description: Berhasil mengambil data kecamatan
+          description: "Berhasil mengambil data kecamatan"
 
   /v1/kecamatan/{id}:
     get:
-      summary: Detail Kecamatan
-      description: Mengambil detail kecamatan berdasarkan ID atau 6-digit full_code.
+      summary: "Detail Kecamatan"
+      description: "Mengambil detail kecamatan berdasarkan ID atau 6-digit full_code."
       tags:
         - Kecamatan
       parameters:
         - name: id
           in: path
-          description: ID atau full_code (contoh: 960414)
+          description: "ID atau full_code (contoh: 960414)"
           required: true
           schema:
             type: string
       responses:
         '200':
-          description: Detail kecamatan ditemukan
+          description: "Detail kecamatan ditemukan"
         '404':
-          description: Kecamatan tidak ditemukan
+          description: "Kecamatan tidak ditemukan"
 
   /v1/kecamatan/{id}/kelurahan:
     get:
-      summary: Daftar Kelurahan/Desa di Kecamatan
-      description: Mengambil seluruh kelurahan/desa (kampung) di bawah kecamatan tertentu.
+      summary: "Daftar Kelurahan/Desa di Kecamatan"
+      description: "Mengambil seluruh kelurahan/desa (kampung) di bawah kecamatan tertentu."
       tags:
         - Kecamatan
         - Kelurahan
       parameters:
         - name: id
           in: path
-          description: ID atau full_code kecamatan
+          description: "ID atau full_code kecamatan"
           required: true
           schema:
             type: string
         - name: search
           in: query
-          description: Cari nama kelurahan/desa
+          description: "Cari nama kelurahan/desa"
           required: false
           schema:
             type: string
         - name: pos_code
           in: query
-          description: Filter kode pos
+          description: "Filter kode pos"
           required: false
           schema:
             type: string
       responses:
         '200':
-          description: Daftar kelurahan/desa berhasil diambil
+          description: "Daftar kelurahan/desa berhasil diambil"
 
   /v1/kelurahan:
     get:
-      summary: Daftar Seluruh Kelurahan/Desa
-      description: Mengambil data kelurahan/desa di Indonesia dengan pencarian dan filter kode pos.
+      summary: "Daftar Seluruh Kelurahan/Desa"
+      description: "Mengambil data kelurahan/desa di Indonesia dengan pencarian dan filter kode pos."
       tags:
         - Kelurahan
       parameters:
         - name: kecamatan_id
           in: query
-          description: Filter berdasarkan ID kecamatan induk
+          description: "Filter berdasarkan ID kecamatan induk"
           required: false
           schema:
             type: integer
         - name: search
           in: query
-          description: Cari nama kelurahan/desa
+          description: "Cari nama kelurahan/desa"
           required: false
           schema:
             type: string
         - name: full_code
           in: query
-          description: Filter 10-digit full code (contoh: 9604032001)
+          description: "Filter 10-digit full code (contoh: 9604032001)"
           required: false
           schema:
             type: string
         - name: pos_code
           in: query
-          description: Filter berdasarkan 5-digit kode pos (contoh: 98379, 10110)
+          description: "Filter berdasarkan 5-digit kode pos (contoh: 98379, 10110)"
           required: false
           schema:
             type: string
         - name: per_page
           in: query
-          description: Jumlah data per halaman (default: 25)
+          description: "Jumlah data per halaman (default: 25)"
           required: false
           schema:
             type: integer
             default: 25
       responses:
         '200':
-          description: Berhasil mengambil data kelurahan/desa
+          description: "Berhasil mengambil data kelurahan/desa"
 
   /v1/kelurahan/{id}:
     get:
-      summary: Detail Kelurahan/Desa
-      description: Mengambil detail kelurahan/desa lengkap dengan hierarki relasi kecamatan, kabupaten, dan provinsi.
+      summary: "Detail Kelurahan/Desa"
+      description: "Mengambil detail kelurahan/desa lengkap dengan hierarki relasi kecamatan, kabupaten, dan provinsi."
       tags:
         - Kelurahan
       parameters:
         - name: id
           in: path
-          description: ID atau 10-digit full_code
+          description: "ID atau 10-digit full_code"
           required: true
           schema:
             type: string
       responses:
         '200':
-          description: Detail kelurahan/desa ditemukan
+          description: "Detail kelurahan/desa ditemukan"
         '404':
-          description: Kelurahan/Desa tidak ditemukan
+          description: "Kelurahan/Desa tidak ditemukan"
 
   /v1/search:
     get:
-      summary: Autocomplete / Pencarian Global
-      description: Mencari kata kunci secara simultan ke seluruh tingkat wilayah (Provinsi, Kabupaten/Kota, Kecamatan, dan Kelurahan/Desa/Kode Pos) dalam satu panggilan API.
+      summary: "Autocomplete / Pencarian Global"
+      description: "Mencari kata kunci secara simultan ke seluruh tingkat wilayah (Provinsi, Kabupaten/Kota, Kecamatan, dan Kelurahan/Desa/Kode Pos) dalam satu panggilan API."
       tags:
         - Pencarian Global
       parameters:
         - name: q
           in: query
-          description: Kata kunci pencarian (minimal 2 karakter, contoh: Sorong, 98415, Bandung)
+          description: "Kata kunci pencarian (minimal 2 karakter, contoh: Sorong, 98415, Bandung)"
           required: true
           schema:
             type: string
       responses:
         '200':
-          description: Hasil pencarian berhasil diambil
+          description: "Hasil pencarian berhasil diambil"
         '422':
-          description: Parameter pencarian kurang dari 2 karakter
+          description: "Parameter pencarian kurang dari 2 karakter"
 
   /v1/nearby:
     get:
-      summary: Pencarian Wilayah Terdekat (Geospatial / Radius)
-      description: Mencari wilayah administratif terdekat dalam radius kilometer tertentu dari titik koordinat GPS (Latitude & Longitude) menggunakan formula Haversine.
+      summary: "Pencarian Wilayah Terdekat (Geospatial / Radius)"
+      description: "Mencari wilayah administratif terdekat dalam radius kilometer tertentu dari titik koordinat GPS (Latitude & Longitude) menggunakan formula Haversine."
       tags:
         - Geospatial & Radius
       parameters:
         - name: lat
           in: query
-          description: Titik Latitude (-90 s/d 90, contoh -6.2088)
+          description: "Titik Latitude (-90 s/d 90, contoh -6.2088)"
           required: true
           schema:
             type: number
             format: float
         - name: lng
           in: query
-          description: Titik Longitude (-180 s/d 180, contoh 106.8456)
+          description: "Titik Longitude (-180 s/d 180, contoh 106.8456)"
           required: true
           schema:
             type: number
             format: float
         - name: radius
           in: query
-          description: Radius pencarian dalam kilometer (default 50 km)
+          description: "Radius pencarian dalam kilometer (default 50 km)"
           required: false
           schema:
             type: number
             default: 50
         - name: level
           in: query
-          description: Tingkat wilayah yang dicari (provinsi, kabupaten, kecamatan, kelurahan)
+          description: "Tingkat wilayah yang dicari (provinsi, kabupaten, kecamatan, kelurahan)"
           required: false
           schema:
             type: string
@@ -405,39 +405,39 @@ paths:
             default: provinsi
         - name: limit
           in: query
-          description: Batas jumlah hasil yang dikembalikan (default 10, max 50)
+          description: "Batas jumlah hasil yang dikembalikan (default 10, max 50)"
           required: false
           schema:
             type: integer
             default: 10
       responses:
         '200':
-          description: Daftar wilayah terdekat berhasil ditemukan beserta jarak (distance_km)
+          description: "Daftar wilayah terdekat berhasil ditemukan beserta jarak (distance_km)"
         '422':
-          description: Parameter koordinat tidak valid atau di luar jangkauan
+          description: "Parameter koordinat tidak valid atau di luar jangkauan"
 
   /v1/geojson/provinsi:
     get:
-      summary: GeoJSON RFC 7946 Seluruh Provinsi
-      description: Mengambil seluruh 38 provinsi dalam format standar RFC 7946 GeoJSON FeatureCollection untuk visualisasi peta Leaflet, Mapbox, dan QGIS.
+      summary: "GeoJSON RFC 7946 Seluruh Provinsi"
+      description: "Mengambil seluruh 38 provinsi dalam format standar RFC 7946 GeoJSON FeatureCollection untuk visualisasi peta Leaflet, Mapbox, dan QGIS."
       tags:
         - GeoJSON RFC 7946
       parameters:
         - name: search
           in: query
-          description: Filter nama provinsi
+          description: "Filter nama provinsi"
           required: false
           schema:
             type: string
         - name: code
           in: query
-          description: Filter kode provinsi
+          description: "Filter kode provinsi"
           required: false
           schema:
             type: string
       responses:
         '200':
-          description: FeatureCollection GeoJSON provinsi berhasil diambil
+          description: "FeatureCollection GeoJSON provinsi berhasil diambil"
           content:
             application/geo+json:
               schema:
@@ -445,57 +445,57 @@ paths:
 
   /v1/geojson/provinsi/{id}:
     get:
-      summary: GeoJSON Feature Detail Provinsi
-      description: Mengambil detail satu provinsi dalam format RFC 7946 GeoJSON Feature berdasarkan ID atau kode wilayah.
+      summary: "GeoJSON Feature Detail Provinsi"
+      description: "Mengambil detail satu provinsi dalam format RFC 7946 GeoJSON Feature berdasarkan ID atau kode wilayah."
       tags:
         - GeoJSON RFC 7946
       parameters:
         - name: id
           in: path
-          description: ID atau kode provinsi (contoh: 26 atau 96)
+          description: "ID atau kode provinsi (contoh: 26 atau 96)"
           required: true
           schema:
             type: string
       responses:
         '200':
-          description: GeoJSON Feature provinsi ditemukan
+          description: "GeoJSON Feature provinsi ditemukan"
         '404':
-          description: Provinsi tidak ditemukan
+          description: "Provinsi tidak ditemukan"
 
   /v1/geojson/kabupaten:
     get:
-      summary: GeoJSON RFC 7946 Seluruh Kabupaten/Kota
-      description: Mengambil kabupaten/kota dalam format standar RFC 7946 GeoJSON FeatureCollection.
+      summary: "GeoJSON RFC 7946 Seluruh Kabupaten/Kota"
+      description: "Mengambil kabupaten/kota dalam format standar RFC 7946 GeoJSON FeatureCollection."
       tags:
         - GeoJSON RFC 7946
       parameters:
         - name: provinsi_id
           in: query
-          description: Filter ID provinsi induk
+          description: "Filter ID provinsi induk"
           required: false
           schema:
             type: integer
       responses:
         '200':
-          description: FeatureCollection GeoJSON kabupaten/kota berhasil diambil
+          description: "FeatureCollection GeoJSON kabupaten/kota berhasil diambil"
 
   /v1/export/{level}:
     get:
-      summary: Ekspor Master Data (CSV / JSON Stream)
-      description: Mengunduh langsung seluruh data wilayah per tingkat administratif dalam format file CSV spreadsheet (ber-BOM Excel UTF-8) atau JSON murni.
+      summary: "Ekspor Master Data (CSV / JSON Stream)"
+      description: "Mengunduh langsung seluruh data wilayah per tingkat administratif dalam format file CSV spreadsheet (ber-BOM Excel UTF-8) atau JSON murni."
       tags:
         - Ekspor Data
       parameters:
         - name: level
           in: path
-          description: Tingkat wilayah (provinsi, kabupaten, kecamatan, kelurahan)
+          description: "Tingkat wilayah (provinsi, kabupaten, kecamatan, kelurahan)"
           required: true
           schema:
             type: string
             enum: [provinsi, kabupaten, kecamatan, kelurahan]
         - name: format
           in: query
-          description: Format file keluaran (csv atau json)
+          description: "Format file keluaran (csv atau json)"
           required: false
           schema:
             type: string
@@ -503,7 +503,7 @@ paths:
             default: csv
       responses:
         '200':
-          description: Berkas unduhan CSV/JSON berhasil dialirkan (streaming)
+          description: "Berkas unduhan CSV/JSON berhasil dialirkan (streaming)"
         '404':
-          description: Tingkat wilayah tidak valid
+          description: "Tingkat wilayah tidak valid"
 

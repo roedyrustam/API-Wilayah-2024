@@ -94,6 +94,7 @@
             <a href="/json/kabupaten.json" target="_blank">JSON Kabupaten</a>
             <a href="/json/kecamatan.json" target="_blank">JSON Kecamatan</a>
             <a href="/json/kelurahan.json" target="_blank">JSON Kelurahan</a>
+            <a href="/docs/openapi.json" target="_blank">Spec OpenAPI JSON</a>
             <a href="/docs/openapi.yaml" target="_blank">Spec OpenAPI YAML</a>
         </nav>
     </header>
@@ -105,7 +106,7 @@
     <script>
         window.onload = function() {
             window.ui = SwaggerUIBundle({
-                url: "/docs/openapi.yaml",
+                url: "/docs/openapi.json",
                 dom_id: '#swagger-ui',
                 deepLinking: true,
                 presets: [
