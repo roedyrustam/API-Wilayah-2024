@@ -4,9 +4,26 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Cache;
 
 class BaseApiController extends Controller
 {
+    /**
+     * Cache TTL in seconds (default: 86400 / 24 hours).
+     */
+    protected int $cacheTtl = 86400;
+
+    /**
+     * Helper to remember query result with request parameter fingerprinting.
+     */
+    protected function cached(string $resource, array $params, callable $callback): mixed
+    {
+        ksort($params);
+        $key = 'api_wilayah:' . $resource . ':' . md5(serialize($params));
+
+        return Cache::remember($key, $this->cacheTtl, $callback);
+    }
+
     /**
      * Send a standardized success JSON response.
      */

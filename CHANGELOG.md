@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **RESTful API Engine**: Menambahkan endpoint REST API publik lengkap untuk Provinsi, Kabupaten/Kota, Kecamatan, dan Kelurahan/Desa (`/api/v1/...` dan `/api/...`) dengan filter pencarian, kode wilayah, kode pos, dan pagination.
+- **In-Memory Caching Layer**: Integrasi query caching otomatis via method `cached()` pada `BaseApiController` dengan TTL 24 jam dan parameter fingerprinting untuk menghasilkan waktu respons sub-5ms.
+- **Rate Limiting Guard**: Konfigurasi rate limiter `120 request/menit` per IP dengan format JSON error 429 yang informatif untuk mencegah abuse.
+- **Global Autocomplete Search**: Menambahkan controller & endpoint `/api/v1/search?q=` untuk pencarian kata kunci simultan lintas 4 level wilayah sekaligus.
 - **OpenAPI 3.1 & Swagger UI**: Menambahkan file spesifikasi `public/docs/openapi.yaml` dan viewer interaktif di `/api/documentation`.
 - **BaseApiController**: Menambahkan standarisasi format response JSON untuk konsistensi API publik.
 - **PRD & Blueprint**: Menambahkan `PRD.md` dan `BLUEPRINT.md` sebagai dokumentasi arsitektur dan persyaratan sistem.

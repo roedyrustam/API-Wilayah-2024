@@ -347,3 +347,22 @@ paths:
           description: Detail kelurahan/desa ditemukan
         '404':
           description: Kelurahan/Desa tidak ditemukan
+
+  /v1/search:
+    get:
+      summary: Autocomplete / Pencarian Global
+      description: Mencari kata kunci secara simultan ke seluruh tingkat wilayah (Provinsi, Kabupaten/Kota, Kecamatan, dan Kelurahan/Desa/Kode Pos) dalam satu panggilan API.
+      tags:
+        - Pencarian Global
+      parameters:
+        - name: q
+          in: query
+          description: Kata kunci pencarian (minimal 2 karakter, contoh: Sorong, 98415, Bandung)
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Hasil pencarian berhasil diambil
+        '422':
+          description: Parameter pencarian kurang dari 2 karakter

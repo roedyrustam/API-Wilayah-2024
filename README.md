@@ -102,8 +102,12 @@ Spesifikasi OpenAPI 3.1 YAML tersedia di: `public/docs/openapi.yaml`.
 | `GET` | `/api/v1/kecamatan/{id}/kelurahan` | Kelurahan/Desa di kecamatan tertentu | `search`, `pos_code`, `paginate` |
 | `GET` | `/api/v1/kelurahan` | Daftar seluruh kelurahan/desa | `kecamatan_id`, `search`, `pos_code`, `page` |
 | `GET` | `/api/v1/kelurahan/{id}` | Detail kelurahan/desa lengkap hierarki | - |
+| `GET` | `/api/v1/search` | **Autocomplete Global** (cari simultan 4 level wilayah) | `q` (minimal 2 karakter) |
 
-*Catatan: Endpoint juga dapat diakses tanpa prefix `v1` (misal: `/api/provinsi`).*
+*Catatan:*
+- *Endpoint juga dapat diakses tanpa prefix `v1` (misal: `/api/provinsi`, `/api/search`).*
+- *Dilengkapi **In-Memory Caching (TTL 24 jam)** untuk respons sub-5ms.*
+- *Dilengkapi **API Rate Limiter** 120 request/menit per alamat IP untuk mencegah abuse.*
 
 ### Format Standar Response JSON
 
