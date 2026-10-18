@@ -5,10 +5,27 @@
   "functions": {
     "api/index.php": {
       "runtime": "vercel-php@0.7.2",
-      "memory": 1024,
       "maxDuration": 15
     }
   },
+  "headers": [
+    {
+      "source": "/(json|sdk|docs)/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, OPTIONS" },
+        { "key": "Cache-Control", "value": "public, max-age=86400, s-maxage=604800, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization, X-Requested-With, Accept" }
+      ]
+    }
+  ],
   "routes": [
     {
       "src": "/build/(.*)",
