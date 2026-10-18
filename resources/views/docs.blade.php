@@ -469,8 +469,9 @@
         }
 
         .swagger-ui .opblock-summary-description {
-            color: var(--text-muted) !important;
-            font-size: 13px !important;
+            color: #cbd5e1 !important;
+            font-size: 13.5px !important;
+            font-weight: 500 !important;
         }
 
         .swagger-ui .opblock .opblock-summary {
@@ -491,15 +492,17 @@
 
         /* Visibility: Text inside operations description wrapper */
         .swagger-ui .opblock-description-wrapper,
-        .swagger-ui .opblock-description-wrapper p,
+        .swagger-ui .opblock-description-wrapper *,
+        .swagger-ui .opblock-description,
+        .swagger-ui .opblock-description *,
         .swagger-ui .opblock-external-docs-wrapper,
-        .swagger-ui .opblock-external-docs-wrapper p,
+        .swagger-ui .opblock-external-docs-wrapper *,
         .swagger-ui .opblock-title_normal p,
         .swagger-ui .renderedMarkdown,
-        .swagger-ui .renderedMarkdown p,
+        .swagger-ui .renderedMarkdown *,
         .swagger-ui .markdown,
-        .swagger-ui .markdown p {
-            color: #f1f5f9 !important;
+        .swagger-ui .markdown * {
+            color: #f8fafc !important;
             font-size: 14px !important;
             line-height: 1.6 !important;
         }
@@ -514,21 +517,28 @@
             justify-content: space-between !important;
         }
 
-        .swagger-ui .opblock-section-header h4 {
+        .swagger-ui .opblock-section-header h4,
+        .swagger-ui .tabli button.tablinks {
             color: var(--cyan) !important;
             font-size: 15px !important;
             font-weight: 700 !important;
             letter-spacing: -0.01em !important;
         }
 
+        .swagger-ui .tabli.active button.tablinks {
+            color: #38bdf8 !important;
+            border-bottom: 2px solid #38bdf8 !important;
+        }
+
         .swagger-ui .parameters-container .parameters-header,
+        .swagger-ui .parameters-container th,
         .swagger-ui table thead tr th {
-            color: #cbd5e1 !important;
-            font-size: 12px !important;
-            font-weight: 700 !important;
+            color: #f1f5f9 !important;
+            font-size: 12.5px !important;
+            font-weight: 800 !important;
             text-transform: uppercase !important;
-            letter-spacing: 0.05em !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+            letter-spacing: 0.06em !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
             padding: 10px 8px !important;
         }
 
@@ -562,22 +572,24 @@
         }
 
         .swagger-ui .parameter__in {
-            color: #94a3b8 !important;
+            color: #a1a1aa !important;
             font-family: var(--font-mono) !important;
-            font-size: 11px !important;
+            font-size: 11.5px !important;
             font-style: italic !important;
+            font-weight: 500 !important;
         }
 
         .swagger-ui .parameter__extension,
         .swagger-ui .parameter__default,
-        .swagger-ui .parameters-col_description {
-            color: #cbd5e1 !important;
+        .swagger-ui .parameters-col_description,
+        .swagger-ui .parameters-col_description * {
+            color: #e2e8f0 !important;
             font-size: 13.5px !important;
             line-height: 1.5 !important;
         }
 
         .swagger-ui .parameters-col_description p {
-            color: #cbd5e1 !important;
+            color: #e2e8f0 !important;
             font-size: 13.5px !important;
         }
 
@@ -586,18 +598,19 @@
         .swagger-ui select,
         .swagger-ui textarea {
             background: #0f172a !important;
-            border: 1px solid rgba(56, 189, 248, 0.3) !important;
+            border: 1px solid rgba(56, 189, 248, 0.4) !important;
             border-radius: 7px !important;
             color: #ffffff !important;
             font-family: var(--font-sans) !important;
-            font-size: 13px !important;
+            font-size: 13.5px !important;
             padding: 9px 14px !important;
             transition: all 0.15s ease !important;
         }
 
         .swagger-ui input[type="text"]::placeholder,
         .swagger-ui textarea::placeholder {
-            color: rgba(148, 163, 184, 0.65) !important;
+            color: #94a3b8 !important;
+            opacity: 1 !important;
             font-style: normal !important;
         }
 
@@ -689,28 +702,42 @@
             width: 100% !important;
         }
 
-        .swagger-ui .responses-table thead th {
-            color: #cbd5e1 !important;
-            font-size: 11.5px !important;
-            font-weight: 700 !important;
+        .swagger-ui .responses-table thead th,
+        .swagger-ui .responses-table th {
+            color: #f1f5f9 !important;
+            font-size: 12px !important;
+            font-weight: 800 !important;
             text-transform: uppercase !important;
             letter-spacing: 0.05em !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.18) !important;
+            padding: 10px 8px !important;
         }
 
         .swagger-ui .response-col_status {
             color: #34d399 !important;
             font-family: var(--font-mono) !important;
-            font-size: 13.5px !important;
+            font-size: 14px !important;
             font-weight: 800 !important;
         }
 
         .swagger-ui .response-col_description,
+        .swagger-ui .response-col_description *,
         .swagger-ui .response-col_description__inner div.markdown p,
         .swagger-ui .response-col_description__inner div.renderedMarkdown p {
-            color: #f1f5f9 !important;
+            color: #f8fafc !important;
             font-size: 13.5px !important;
             line-height: 1.5 !important;
+        }
+
+        .swagger-ui .response-control-media-type__title {
+            color: #cbd5e1 !important;
+            font-size: 12px !important;
+            font-weight: 600 !important;
+        }
+
+        .swagger-ui .response-control-media-type__accept-message {
+            color: #94a3b8 !important;
+            font-size: 11px !important;
         }
 
         .swagger-ui .response-col_links {
@@ -723,7 +750,7 @@
         .swagger-ui .curl-command pre,
         .swagger-ui .curl {
             background: #030712 !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.12) !important;
             border-radius: 8px !important;
             color: #38bdf8 !important;
             font-family: var(--font-mono) !important;
@@ -732,11 +759,27 @@
             line-height: 1.55 !important;
         }
 
+        .swagger-ui .response-headers {
+            color: #e2e8f0 !important;
+            font-family: var(--font-mono) !important;
+            font-size: 12px !important;
+            background: #030712 !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 8px !important;
+            padding: 12px !important;
+        }
+
         .swagger-ui .copy-to-clipboard button {
             background: rgba(255, 255, 255, 0.12) !important;
             border: 1px solid rgba(255, 255, 255, 0.2) !important;
             border-radius: 4px !important;
             padding: 4px 8px !important;
+        }
+
+        /* Validator badge removal */
+        .swagger-ui .validator,
+        .swagger-ui a[href*="validator.swagger.io"] {
+            display: none !important;
         }
 
         .swagger-ui .opblock .opblock-summary-path a {
@@ -1046,7 +1089,8 @@
                 tryItOutEnabled: true,
                 persistAuthorization: true,
                 defaultModelsExpandDepth: 1,
-                defaultModelExpandDepth: 1
+                defaultModelExpandDepth: 1,
+                validatorUrl: null
             });
         };
     </script>
