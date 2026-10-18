@@ -489,110 +489,254 @@
             border-bottom-right-radius: 10px !important;
         }
 
-        /* Parameters & Table */
-        .swagger-ui .opblock-section-header {
-            background: transparent !important;
-            color: var(--cyan) !important;
+        /* Visibility: Text inside operations description wrapper */
+        .swagger-ui .opblock-description-wrapper,
+        .swagger-ui .opblock-description-wrapper p,
+        .swagger-ui .opblock-external-docs-wrapper,
+        .swagger-ui .opblock-external-docs-wrapper p,
+        .swagger-ui .opblock-title_normal p,
+        .swagger-ui .renderedMarkdown,
+        .swagger-ui .renderedMarkdown p,
+        .swagger-ui .markdown,
+        .swagger-ui .markdown p {
+            color: #f1f5f9 !important;
             font-size: 14px !important;
-            font-weight: 600 !important;
-            box-shadow: none !important;
-            padding: 8px 0 !important;
+            line-height: 1.6 !important;
         }
 
+        /* Parameters & Section Header */
+        .swagger-ui .opblock-section-header {
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 12px 0 8px 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+        }
+
+        .swagger-ui .opblock-section-header h4 {
+            color: var(--cyan) !important;
+            font-size: 15px !important;
+            font-weight: 700 !important;
+            letter-spacing: -0.01em !important;
+        }
+
+        .swagger-ui .parameters-container .parameters-header,
         .swagger-ui table thead tr th {
-            color: var(--text-muted) !important;
+            color: #cbd5e1 !important;
             font-size: 12px !important;
-            font-weight: 600 !important;
-            border-bottom: 1px solid var(--border) !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.05em !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+            padding: 10px 8px !important;
         }
 
         .swagger-ui table tbody tr td {
-            color: #cbd5e1 !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
-            padding: 12px 10px !important;
+            color: #f8fafc !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+            padding: 14px 10px !important;
+            vertical-align: top !important;
         }
 
         .swagger-ui .parameter__name {
-            color: #f1f5f9 !important;
+            color: #ffffff !important;
             font-family: var(--font-mono) !important;
-            font-size: 13px !important;
-            font-weight: 600 !important;
+            font-size: 13.5px !important;
+            font-weight: 700 !important;
+        }
+
+        .swagger-ui .parameter__name.required {
+            font-weight: 700 !important;
+        }
+
+        .swagger-ui .parameter__name.required span {
+            color: #f43f5e !important;
         }
 
         .swagger-ui .parameter__type {
-            color: #38bdf8 !important;
+            color: var(--cyan) !important;
+            font-family: var(--font-mono) !important;
+            font-size: 11.5px !important;
+            font-weight: 600 !important;
+        }
+
+        .swagger-ui .parameter__in {
+            color: #94a3b8 !important;
             font-family: var(--font-mono) !important;
             font-size: 11px !important;
+            font-style: italic !important;
         }
 
+        .swagger-ui .parameter__extension,
+        .swagger-ui .parameter__default,
+        .swagger-ui .parameters-col_description {
+            color: #cbd5e1 !important;
+            font-size: 13.5px !important;
+            line-height: 1.5 !important;
+        }
+
+        .swagger-ui .parameters-col_description p {
+            color: #cbd5e1 !important;
+            font-size: 13.5px !important;
+        }
+
+        /* Inputs, Selects & Textarea */
         .swagger-ui input[type="text"], 
-        .swagger-ui select {
-            background: #1e293b !important;
-            border: 1px solid rgba(255, 255, 255, 0.12) !important;
-            border-radius: 6px !important;
+        .swagger-ui select,
+        .swagger-ui textarea {
+            background: #0f172a !important;
+            border: 1px solid rgba(56, 189, 248, 0.3) !important;
+            border-radius: 7px !important;
             color: #ffffff !important;
             font-family: var(--font-sans) !important;
-            padding: 8px 12px !important;
+            font-size: 13px !important;
+            padding: 9px 14px !important;
+            transition: all 0.15s ease !important;
         }
 
-        .swagger-ui input[type="text"]:focus {
+        .swagger-ui input[type="text"]::placeholder,
+        .swagger-ui textarea::placeholder {
+            color: rgba(148, 163, 184, 0.65) !important;
+            font-style: normal !important;
+        }
+
+        .swagger-ui input[type="text"]:focus,
+        .swagger-ui select:focus,
+        .swagger-ui textarea:focus {
             border-color: var(--cyan) !important;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2) !important;
             outline: none !important;
         }
 
-        /* Buttons: Try it out, Execute, Clear */
+        /* Buttons: Try it out, Cancel, Execute, Clear */
         .swagger-ui .btn.try-out__btn {
-            background: rgba(56, 189, 248, 0.1) !important;
-            border: 1px solid rgba(56, 189, 248, 0.3) !important;
+            background: rgba(56, 189, 248, 0.15) !important;
+            border: 1px solid rgba(56, 189, 248, 0.45) !important;
             color: var(--cyan) !important;
-            border-radius: 6px !important;
-            font-size: 12px !important;
-            font-weight: 600 !important;
+            border-radius: 7px !important;
+            font-size: 12.5px !important;
+            font-weight: 700 !important;
+            padding: 6px 16px !important;
             transition: all 0.15s ease !important;
         }
 
         .swagger-ui .btn.try-out__btn:hover {
-            background: rgba(56, 189, 248, 0.2) !important;
+            background: rgba(56, 189, 248, 0.3) !important;
             border-color: var(--cyan) !important;
+            color: #ffffff !important;
+        }
+
+        .swagger-ui .btn.cancel {
+            background: rgba(244, 63, 94, 0.15) !important;
+            border: 1px solid rgba(244, 63, 94, 0.45) !important;
+            color: #fb7185 !important;
+            border-radius: 7px !important;
+            font-size: 12.5px !important;
+            font-weight: 700 !important;
+            padding: 6px 16px !important;
+            transition: all 0.15s ease !important;
+        }
+
+        .swagger-ui .btn.cancel:hover {
+            background: rgba(244, 63, 94, 0.3) !important;
+            color: #ffffff !important;
         }
 
         .swagger-ui .btn.execute {
             background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
             border: 1px solid rgba(56, 189, 248, 0.5) !important;
             color: #ffffff !important;
-            border-radius: 6px !important;
+            border-radius: 7px !important;
             font-weight: 700 !important;
-            box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3) !important;
+            font-size: 13px !important;
+            padding: 8px 24px !important;
+            box-shadow: 0 2px 10px rgba(2, 132, 199, 0.4) !important;
+        }
+
+        .swagger-ui .btn.execute:hover {
+            background: linear-gradient(135deg, #0369a1 0%, #075985 100%) !important;
+            transform: translateY(-1px) !important;
         }
 
         .swagger-ui .btn.btn-clear {
-            background: rgba(255, 255, 255, 0.05) !important;
+            background: rgba(255, 255, 255, 0.08) !important;
             border: 1px solid var(--border) !important;
-            color: #94a3b8 !important;
-            border-radius: 6px !important;
+            color: #cbd5e1 !important;
+            border-radius: 7px !important;
+            font-size: 12.5px !important;
+            font-weight: 600 !important;
+            padding: 6px 16px !important;
+        }
+
+        .swagger-ui .btn.btn-clear:hover {
+            background: rgba(255, 255, 255, 0.15) !important;
+            color: #ffffff !important;
         }
 
         /* Responses & Code Blocks */
+        .swagger-ui .responses-wrapper .responses-inner h4,
+        .swagger-ui .responses-wrapper .responses-inner h5,
         .swagger-ui .responses-inner h4,
         .swagger-ui .responses-inner h5 {
-            color: #f1f5f9 !important;
+            color: #ffffff !important;
+            font-size: 14px !important;
+            font-weight: 700 !important;
+            margin: 14px 0 10px 0 !important;
+        }
+
+        .swagger-ui .responses-table {
+            width: 100% !important;
+        }
+
+        .swagger-ui .responses-table thead th {
+            color: #cbd5e1 !important;
+            font-size: 11.5px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.05em !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
         }
 
         .swagger-ui .response-col_status {
             color: #34d399 !important;
             font-family: var(--font-mono) !important;
-            font-weight: 700 !important;
+            font-size: 13.5px !important;
+            font-weight: 800 !important;
+        }
+
+        .swagger-ui .response-col_description,
+        .swagger-ui .response-col_description__inner div.markdown p,
+        .swagger-ui .response-col_description__inner div.renderedMarkdown p {
+            color: #f1f5f9 !important;
+            font-size: 13.5px !important;
+            line-height: 1.5 !important;
+        }
+
+        .swagger-ui .response-col_links {
+            color: #94a3b8 !important;
+            font-size: 12px !important;
         }
 
         .swagger-ui .highlight-code pre,
-        .swagger-ui pre.microlight {
+        .swagger-ui pre.microlight,
+        .swagger-ui .curl-command pre,
+        .swagger-ui .curl {
             background: #030712 !important;
-            border: 1px solid var(--border) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
             border-radius: 8px !important;
             color: #38bdf8 !important;
             font-family: var(--font-mono) !important;
-            font-size: 12px !important;
-            padding: 14px !important;
+            font-size: 12.5px !important;
+            padding: 14px 16px !important;
+            line-height: 1.55 !important;
+        }
+
+        .swagger-ui .copy-to-clipboard button {
+            background: rgba(255, 255, 255, 0.12) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 4px !important;
+            padding: 4px 8px !important;
         }
 
         .swagger-ui .opblock .opblock-summary-path a {
@@ -604,47 +748,67 @@
             color: #f8fafc !important;
         }
 
-        .swagger-ui .response-col_description {
-            color: #cbd5e1 !important;
+        /* Schemas & Models Accordion */
+        .swagger-ui section.models {
+            border: 1px solid var(--border) !important;
+            border-radius: 12px !important;
+            background: rgba(15, 23, 42, 0.7) !important;
+            margin-top: 28px !important;
+            padding: 16px !important;
         }
 
-        .swagger-ui .model-title {
-            color: #f8fafc !important;
+        .swagger-ui section.models h4 {
+            color: #ffffff !important;
+            font-size: 16px !important;
             font-weight: 700 !important;
         }
 
+        .swagger-ui .model-box {
+            background: #0b0f19 !important;
+            border-radius: 8px !important;
+            padding: 8px 12px !important;
+        }
+
+        .swagger-ui .model-title {
+            color: #ffffff !important;
+            font-weight: 700 !important;
+            font-size: 13.5px !important;
+        }
+
         .swagger-ui .model {
-            color: #cbd5e1 !important;
+            color: #e2e8f0 !important;
             font-family: var(--font-mono) !important;
+            font-size: 12.5px !important;
         }
 
         .swagger-ui .prop-name {
             color: var(--cyan) !important;
+            font-weight: 600 !important;
         }
 
         .swagger-ui .prop-type {
             color: #c084fc !important;
+            font-family: var(--font-mono) !important;
+        }
+
+        .swagger-ui .prop-format {
+            color: #94a3b8 !important;
+        }
+
+        .swagger-ui .property-row td {
+            color: #e2e8f0 !important;
         }
 
         .swagger-ui .tabli button.tablinks {
             color: var(--text-muted) !important;
             font-weight: 600 !important;
+            font-size: 12.5px !important;
         }
 
         .swagger-ui .tabli.active button.tablinks {
             color: var(--cyan) !important;
             border-bottom: 2px solid var(--cyan) !important;
-        }
-
-        .swagger-ui section.models {
-            border: 1px solid var(--border) !important;
-            border-radius: 10px !important;
-            background: rgba(15, 23, 42, 0.6) !important;
-            margin-top: 24px !important;
-        }
-
-        .swagger-ui section.models h4 {
-            color: #ffffff !important;
+            font-weight: 700 !important;
         }
 
         .swagger-ui .model-toggle {
@@ -656,16 +820,15 @@
         }
 
         .swagger-ui .download-contents {
-            background: rgba(56, 189, 248, 0.1) !important;
-            border: 1px solid rgba(56, 189, 248, 0.3) !important;
+            background: rgba(56, 189, 248, 0.15) !important;
+            border: 1px solid rgba(56, 189, 248, 0.4) !important;
             color: var(--cyan) !important;
             border-radius: 6px !important;
             font-weight: 600 !important;
+            font-size: 12px !important;
+            padding: 5px 12px !important;
         }
 
-        .swagger-ui .model-box {
-            background: #0b0f19 !important;
-        }
 
         /* Responsive Adjustments */
         @media (max-width: 860px) {
