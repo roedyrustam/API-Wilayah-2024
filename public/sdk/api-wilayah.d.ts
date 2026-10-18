@@ -106,6 +106,10 @@ export declare class WilayahClient {
     getDistrict(idOrCode: string | number): Promise<Kecamatan>;
     getVillages(kecamatanIdOrCode: string | number): Promise<Kelurahan[]>;
     getVillage(idOrCode: string | number): Promise<Kelurahan>;
+    getKodePos(postalCode: string): Promise<{ pos_code: string; total_villages: number; villages: any[] }>;
+    searchKodePos(query: string, options?: { limit?: number }): Promise<any>;
+    getCascaderProvinsi(provinsiIdOrCode: string | number): Promise<any>;
+    getCascaderKabupaten(kabupatenIdOrCode: string | number): Promise<any>;
     search(query: string): Promise<SearchResults>;
     getNearby(latitude: number, longitude: number, options?: { radius?: number; level?: 'provinsi' | 'kabupaten' | 'all'; limit?: number }): Promise<NearbyResults>;
     getGeoJson(level?: 'provinsi' | 'kabupaten', id?: string | number | null): Promise<GeoJsonFeatureCollection>;

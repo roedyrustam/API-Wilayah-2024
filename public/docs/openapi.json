@@ -3,7 +3,7 @@
     "info": {
         "title": "API Wilayah Indonesia 2026",
         "description": "Dokumentasi resmi REST API Wilayah Administratif Republik Indonesia edisi 2026. Mencakup data terkini 38 Provinsi (termasuk Daerah Khusus Jakarta dan 4 DOB Papua: Papua Selatan, Papua Tengah, Papua Pegunungan, dan Papua Barat Daya dengan kode resmi 96), 514 Kabupaten/Kota, 7.277 Kecamatan, dan 83.763 Kelurahan/Desa beserta kode pos.\n",
-        "version": "2.0.0",
+        "version": "3.2.0",
         "contact": {
             "name": "Roedy Rustam",
             "email": "roedyrustam@gmail.com",
@@ -761,6 +761,134 @@
                     },
                     "404": {
                         "description": "Tingkat wilayah tidak valid"
+                    }
+                }
+            }
+        },
+        "/v1/kodepos": {
+            "get": {
+                "summary": "Pencarian Kode Pos 5-Digit",
+                "description": "Mencari daftar kode pos wilayah dan kelurahan/desa yang cocok dengan dukungan pagination.",
+                "tags": [
+                    "Kode Pos"
+                ],
+                "parameters": [
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Kata kunci kode pos (awalan) atau nama kelurahan (contoh: 101 atau Gambir)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "pos_code",
+                        "in": "query",
+                        "description": "Filter kode pos spesifik",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Jumlah data per halaman (default 20, maks 100)",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "default": 20
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Daftar kode pos berhasil diambil"
+                    }
+                }
+            }
+        },
+        "/v1/kodepos/{code}": {
+            "get": {
+                "summary": "Detail Hierarki Wilayah berdasarkan Kode Pos",
+                "description": "Mengambil data kelurahan, kecamatan, kabupaten/kota, dan provinsi lengkap secara instan dari 5-digit kode pos.",
+                "tags": [
+                    "Kode Pos"
+                ],
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "5-digit kode pos resmi Indonesia (contoh: 10110 atau 98547)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data hierarki kode pos ditemukan"
+                    },
+                    "404": {
+                        "description": "Kode pos tidak ditemukan"
+                    }
+                }
+            }
+        },
+        "/v1/cascader/provinsi/{id}": {
+            "get": {
+                "summary": "Hierarki Cascader Provinsi (Provinsi -> Kab/Kota -> Kecamatan)",
+                "description": "Mengambil seluruh pohon hierarki di bawah provinsi dalam satu kali panggilan jaringan tunggal (single network trip) untuk efisiensi dropdown bertingkat di frontend.",
+                "tags": [
+                    "Cascader Hierarki"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID atau 2-digit kode provinsi (contoh: 31 atau 96)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pohon cascader provinsi berhasil dimuat"
+                    },
+                    "404": {
+                        "description": "Provinsi tidak ditemukan"
+                    }
+                }
+            }
+        },
+        "/v1/cascader/kabupaten/{id}": {
+            "get": {
+                "summary": "Hierarki Cascader Kabupaten (Kab/Kota -> Kecamatan -> Kelurahan)",
+                "description": "Mengambil seluruh pohon hierarki di bawah kabupaten/kota dalam satu kali panggilan jaringan tunggal untuk form pemilihan alamat.",
+                "tags": [
+                    "Cascader Hierarki"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID atau 4-digit full_code kabupaten (contoh: 3171 atau 9601)",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Pohon cascader kabupaten berhasil dimuat"
+                    },
+                    "404": {
+                        "description": "Kabupaten tidak ditemukan"
                     }
                 }
             }

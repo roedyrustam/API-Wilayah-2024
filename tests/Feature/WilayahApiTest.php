@@ -203,4 +203,35 @@ class WilayahApiTest extends TestCase
         $auditCode = Artisan::call('wilayah:audit');
         $this->assertEquals(0, $auditCode);
     }
+
+    /**
+     * Test GeoJSON FeatureCollection for all 514 regencies with centroid coordinates.
+     */
+    public function test_geojson_kabupaten_features(): void
+    {
+        $response = $this->getJson('/api/v1/geojson/kabupaten');
+
+        $response->assertStatus(200)
+            ->assertHeader('Content-Type', 'application/geo+json; charset=utf-8')
+            ->assertJson([
+                'type' => 'FeatureCollection',
+            ])
+            ->assertJsonCount(514, 'features');
+    }
+
+    /**
+     * Test single-trip cascader hierarchy for a province.
+     */
+    public function test_cascader_provinsi_hierarchy(): void
+    {
+        $response = $this->getJson('/api/v1/cascader/provinsi/31');
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'success' => true,
+                'status'  => true,
+            ])
+            ->assertJsonPath('data.code', '31')
+            ->assertJsonPath('data.name', 'DKI Jakarta');
+    }
 }

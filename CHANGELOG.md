@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.3.0] - 2026-10-18
+
+### Added
+- **Pengayaan Koordinat 514 Kabupaten/Kota (100% Selesai)**: Memperkaya seluruh 514 Kabupaten/Kota di Indonesia dengan titik koordinat sentroid (`latitude` dan `longitude`) akurat di SQLite dan file statis `public/json/kabupaten.json`.
+- **Pencarian Spasial & GeoJSON Kabupaten Lengkap**:
+  - Endpoint `/api/v1/geojson/kabupaten` kini mengembalikan 514 Feature GeoJSON RFC 7946 lengkap.
+  - Endpoint `/api/v1/nearby?level=kabupaten` kini dapat mendeteksi kabupaten/kota terdekat dari koordinat GPS secara akurat.
+- **Endpoint Khusus Kode Pos 5-Digit**:
+  - `GET /api/v1/kodepos/{code}`: Lookup langsung hierarki wilayah (Kelurahan, Kecamatan, Kab/Kota, Provinsi) dari 5-digit kode pos untuk kemudahan pengisian form checkout e-commerce dan logistik.
+  - `GET /api/v1/kodepos`: Pencarian kode pos dan autocomplete dengan pagination.
+- **Endpoint Single-Trip Cascader**:
+  - `GET /api/v1/cascader/provinsi/{id}`: Mengembalikan pohon bersarang Provinsi -> Kabupaten -> Kecamatan dalam 1 kali request jaringan (hemat roundtrip latency).
+  - `GET /api/v1/cascader/kabupaten/{id}`: Mengembalikan pohon bersarang Kabupaten -> Kecamatan -> Kelurahan.
+- **Pembaruan Universal Client SDK (JavaScript/TypeScript)**:
+  - Menambahkan method `getKodePos()`, `searchKodePos()`, `getCascaderProvinsi()`, dan `getCascaderKabupaten()` di `public/sdk/api-wilayah.esm.js`, `public/sdk/api-wilayah.js`, dan `public/sdk/api-wilayah.d.ts`.
+- **GitHub Actions Release Automation (`.github/workflows/release.yml`)**: Otomatisasi rilis resmi GitHub beserta packaging aset arsip SDK dan master data.
+- **Artisan Command `php artisan wilayah:enrich-coordinates`**: Perintah CLI untuk sinkronisasi dan pengayaan koordinat wilayah.
+
 ## [3.2.0] - 2026-10-18
 
 ### Added

@@ -142,6 +142,48 @@ export class WilayahClient {
     }
 
     /**
+     * Cari hierarki wilayah berdasarkan 5-digit Kode Pos
+     * @param {string} postalCode Kode pos 5 digit (misal: "10110")
+     */
+    async getKodePos(postalCode) {
+        const res = await this._fetch(`/api/v1/kodepos/${encodeURIComponent(postalCode)}`);
+        return res.data;
+    }
+
+    /**
+     * Cari daftar Kode Pos dengan autocomplete pencarian
+     * @param {string} query Kode pos atau nama kelurahan
+     * @param {Object} [options]
+     * @param {number} [options.limit=20]
+     */
+    async searchKodePos(query, options = {}) {
+        const params = new URLSearchParams({
+            search: query,
+            limit: (options.limit || 20).toString()
+        });
+        const res = await this._fetch(`/api/v1/kodepos?${params.toString()}`);
+        return res.data;
+    }
+
+    /**
+     * Ambil hierarki bersarang provinsi untuk dropdown berjenjang (single-trip network request)
+     * @param {string|number} provinsiIdOrCode ID atau kode provinsi
+     */
+    async getCascaderProvinsi(provinsiIdOrCode) {
+        const res = await this._fetch(`/api/v1/cascader/provinsi/${encodeURIComponent(provinsiIdOrCode)}`);
+        return res.data;
+    }
+
+    /**
+     * Ambil hierarki bersarang kabupaten untuk dropdown berjenjang (single-trip network request)
+     * @param {string|number} kabupatenIdOrCode ID atau full_code kabupaten
+     */
+    async getCascaderKabupaten(kabupatenIdOrCode) {
+        const res = await this._fetch(`/api/v1/cascader/kabupaten/${encodeURIComponent(kabupatenIdOrCode)}`);
+        return res.data;
+    }
+
+    /**
      * Pencarian wilayah multi-tingkat secara cepat (Provinsi, Kab/Kota, Kecamatan, Kelurahan)
      * @param {string} query Minimum 2 karakter
      */

@@ -1,6 +1,6 @@
 {
     "name": "api-wilayah-indonesia-2026",
-    "version": "3.2.0",
+    "version": "3.3.0",
     "description": "Client SDK & Master Data Wilayah Administratif Indonesia 2026 (Standar Kemendagri: 38 Provinsi, 514 Kab/Kota, 7.277 Kecamatan, 83.763 Kelurahan/Desa)",
     "keywords": [
         "wilayah-indonesia",

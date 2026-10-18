@@ -1,0 +1,71 @@
+name: Official GitHub Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag version for release (e.g. v3.2.0)'
+        required: true
+        default: 'v3.2.0'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Build & Publish GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, pdo, pdo_sqlite, zip
+          coverage: none
+
+      - name: Validate composer.json
+        run: composer validate --strict
+
+      - name: Prepare Release Archives
+        run: |
+          mkdir -p dist
+          cp public/docs/openapi.json dist/openapi-spec.json
+          cp public/sdk/api-wilayah.js dist/api-wilayah.js
+          cp public/sdk/api-wilayah.esm.js dist/api-wilayah.esm.js
+          cp public/sdk/api-wilayah.d.ts dist/api-wilayah.d.ts
+          tar -czf dist/api-wilayah-sdk.tar.gz -C public/sdk .
+          tar -czf dist/master-data-json.tar.gz -C public/json .
+
+      - name: Extract Tag Name
+        id: vars
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "tag=${{ github.event.inputs.tag_name }}" >> $GITHUB_OUTPUT
+          else
+            echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Official GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.vars.outputs.tag }}
+          name: "Release ${{ steps.vars.outputs.tag }} - Kemendagri 2026 Standard & Data Enrichment"
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+          files: |
+            dist/openapi-spec.json
+            dist/api-wilayah.js
+            dist/api-wilayah.esm.js
+            dist/api-wilayah.d.ts
+            dist/api-wilayah-sdk.tar.gz
+            dist/master-data-json.tar.gz

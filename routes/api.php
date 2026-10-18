@@ -22,6 +22,8 @@ use App\Http\Controllers\Api\SearchController;
 use App\Http\Controllers\Api\NearbyController;
 use App\Http\Controllers\Api\GeoJsonController;
 use App\Http\Controllers\Api\ExportController;
+use App\Http\Controllers\Api\KodePosController;
+use App\Http\Controllers\Api\CascaderController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -51,6 +53,14 @@ Route::prefix('v1')->group(function () {
     // Kelurahan / Desa
     Route::get('/kelurahan', [KelurahanController::class, 'index']);
     Route::get('/kelurahan/{id}', [KelurahanController::class, 'show']);
+
+    // Dedicated Kode Pos (Postal Code) 5-Digit Endpoints
+    Route::get('/kodepos', [KodePosController::class, 'index']);
+    Route::get('/kodepos/{code}', [KodePosController::class, 'show']);
+
+    // Single-Trip Hierarchical Cascader Dropdown Endpoints
+    Route::get('/cascader/provinsi/{id}', [CascaderController::class, 'provinsi']);
+    Route::get('/cascader/kabupaten/{id}', [CascaderController::class, 'kabupaten']);
 
     // Autocomplete Search
     Route::get('/search', [SearchController::class, 'search']);
@@ -88,4 +98,10 @@ Route::get('/kecamatan/{id}/kelurahan', [KecamatanController::class, 'kelurahan'
 
 Route::get('/kelurahan', [KelurahanController::class, 'index']);
 Route::get('/kelurahan/{id}', [KelurahanController::class, 'show']);
+
+Route::get('/kodepos', [KodePosController::class, 'index']);
+Route::get('/kodepos/{code}', [KodePosController::class, 'show']);
+
+Route::get('/cascader/provinsi/{id}', [CascaderController::class, 'provinsi']);
+Route::get('/cascader/kabupaten/{id}', [CascaderController::class, 'kabupaten']);
 

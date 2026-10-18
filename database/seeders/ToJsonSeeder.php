@@ -7,6 +7,7 @@ use App\Models\Kabupaten;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ToJsonSeeder extends Seeder
@@ -16,10 +17,10 @@ class ToJsonSeeder extends Seeder
      */
     public function run(): void
     {
-        $data_prov = Provinsi::select('id', 'name', 'code', 'latitude', 'longitude', 'timezone')->orderBy('id')->get();
-        $data_kab = Kabupaten::select('id', 'type', 'name', 'code', 'full_code', 'provinsi_id', 'latitude', 'longitude')->orderBy('id')->get();
-        $data_kec = Kecamatan::select('id', 'name', 'code', 'full_code', 'kabupaten_id', 'latitude', 'longitude')->orderBy('id')->get();
-        $data_kel = Kelurahan::select('id', 'name', 'code', 'full_code', 'pos_code', 'kecamatan_id', 'latitude', 'longitude')->orderBy('id')->get();
+        $data_prov = DB::table('provinsis')->select('id', 'name', 'code', 'latitude', 'longitude', 'timezone')->orderBy('id')->get();
+        $data_kab = DB::table('kabupatens')->select('id', 'type', 'name', 'code', 'full_code', 'provinsi_id', 'latitude', 'longitude')->orderBy('id')->get();
+        $data_kec = DB::table('kecamatans')->select('id', 'name', 'code', 'full_code', 'kabupaten_id', 'latitude', 'longitude')->orderBy('id')->get();
+        $data_kel = DB::table('kelurahans')->select('id', 'name', 'code', 'full_code', 'pos_code', 'kecamatan_id', 'latitude', 'longitude')->orderBy('id')->get();
 
         $flags = JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE;
         $json_prov = json_encode($data_prov, $flags);
