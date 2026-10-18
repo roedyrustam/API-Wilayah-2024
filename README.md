@@ -1,5 +1,6 @@
 # API Wilayah Indonesia 2026
 
+[![Release Version](https://img.shields.io/badge/Release-v3.3.0-blue.svg?logo=github)](https://github.com/roedyrustam/API-Wilayah-2024/releases/tag/v3.3.0)
 [![Laravel Version](https://img.shields.io/badge/Laravel-10.x-red.svg)](https://laravel.com)
 [![Filament Version](https://img.shields.io/badge/Filament-3.0-orange.svg)](https://filamentphp.com)
 [![Kemendagri Standard](https://img.shields.io/badge/Standard-Kemendagri%202026-blue.svg)](https://kemendagri.go.id)
@@ -265,6 +266,11 @@ php artisan make:filament-user
 - [x] Reusable Laravel Blade Cascading Component `<x-wilayah-cascade />` (v3.0)
 - [x] Universal Client SDK JS/TS & Docker Containerization (v3.1)
 - [x] Audit CLI Kemendagri 2026 (`php artisan wilayah:audit`) & Modern CI/CD (v3.1)
+- [x] Zero-External-DB Serverless Engine & Vercel Production Deployment (v3.2)
+- [x] Data Enrichment: 5-Digit Kode Pos Hierarchical Lookup & Autocomplete (`/api/v1/kodepos`) (v3.3)
+- [x] Single-Trip Cascader: 1-Network-Call Hierarchy Fetching (`/api/v1/cascader/...`) (v3.3)
+- [x] 100% GIS Coordinates on all 514 Kabupaten/Kota (v3.3)
+- [x] Ultra High-Contrast Modern Dark UI/UX Theme & WCAG 2.2 AA Documentation (v3.3)
 
 ---
 
