@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\KabupatenController;
 use App\Http\Controllers\Api\KecamatanController;
 use App\Http\Controllers\Api\KelurahanController;
 use App\Http\Controllers\Api\SearchController;
+use App\Http\Controllers\Api\NearbyController;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -51,10 +52,14 @@ Route::prefix('v1')->group(function () {
 
     // Autocomplete Search
     Route::get('/search', [SearchController::class, 'search']);
+
+    // Proximity / Nearby Geospatial Search
+    Route::get('/nearby', [NearbyController::class, 'index']);
 });
 
 // Root alias for v1 for backward compatibility (e.g. /api/provinsi directly)
 Route::get('/search', [SearchController::class, 'search']);
+Route::get('/nearby', [NearbyController::class, 'index']);
 Route::get('/provinsi', [ProvinsiController::class, 'index']);
 Route::get('/provinsi/{id}', [ProvinsiController::class, 'show']);
 Route::get('/provinsi/{id}/kabupaten', [ProvinsiController::class, 'kabupaten']);

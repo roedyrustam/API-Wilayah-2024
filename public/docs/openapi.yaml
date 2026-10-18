@@ -366,3 +366,52 @@ paths:
           description: Hasil pencarian berhasil diambil
         '422':
           description: Parameter pencarian kurang dari 2 karakter
+
+  /v1/nearby:
+    get:
+      summary: Pencarian Wilayah Terdekat (Geospatial / Radius)
+      description: Mencari wilayah administratif terdekat dalam radius kilometer tertentu dari titik koordinat GPS (Latitude & Longitude) menggunakan formula Haversine.
+      tags:
+        - Geospatial & Radius
+      parameters:
+        - name: lat
+          in: query
+          description: Titik Latitude (-90 s/d 90, contoh -6.2088)
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: lng
+          in: query
+          description: Titik Longitude (-180 s/d 180, contoh 106.8456)
+          required: true
+          schema:
+            type: number
+            format: float
+        - name: radius
+          in: query
+          description: Radius pencarian dalam kilometer (default 50 km)
+          required: false
+          schema:
+            type: number
+            default: 50
+        - name: level
+          in: query
+          description: Tingkat wilayah yang dicari (provinsi, kabupaten, kecamatan, kelurahan)
+          required: false
+          schema:
+            type: string
+            enum: [provinsi, kabupaten, kecamatan, kelurahan]
+            default: provinsi
+        - name: limit
+          in: query
+          description: Batas jumlah hasil yang dikembalikan (default 10, max 50)
+          required: false
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Daftar wilayah terdekat berhasil ditemukan beserta jarak (distance_km)
+        '422':
+          description: Parameter koordinat tidak valid atau di luar jangkauan

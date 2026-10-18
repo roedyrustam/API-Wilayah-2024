@@ -20,3 +20,11 @@ Route::get('/', function () {
 Route::get('/api/documentation', function () {
     return view('docs');
 });
+
+Route::get('/demo', function () {
+    return view('demo');
+});
+
+Route::get('/playground', function () {
+    return view('demo');
+});

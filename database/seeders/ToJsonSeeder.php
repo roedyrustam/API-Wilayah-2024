@@ -16,10 +16,10 @@ class ToJsonSeeder extends Seeder
      */
     public function run(): void
     {
-        $data_prov = Provinsi::select('id', 'name', 'code')->orderBy('id')->get();
-        $data_kab = Kabupaten::select('id', 'type', 'name', 'code', 'full_code', 'provinsi_id')->orderBy('id')->get();
-        $data_kec = Kecamatan::select('id', 'name', 'code', 'full_code', 'kabupaten_id')->orderBy('id')->get();
-        $data_kel = Kelurahan::select('id', 'name', 'code', 'full_code', 'pos_code', 'kecamatan_id')->orderBy('id')->get();
+        $data_prov = Provinsi::select('id', 'name', 'code', 'latitude', 'longitude', 'timezone')->orderBy('id')->get();
+        $data_kab = Kabupaten::select('id', 'type', 'name', 'code', 'full_code', 'provinsi_id', 'latitude', 'longitude')->orderBy('id')->get();
+        $data_kec = Kecamatan::select('id', 'name', 'code', 'full_code', 'kabupaten_id', 'latitude', 'longitude')->orderBy('id')->get();
+        $data_kel = Kelurahan::select('id', 'name', 'code', 'full_code', 'pos_code', 'kecamatan_id', 'latitude', 'longitude')->orderBy('id')->get();
 
         $flags = JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE;
         $json_prov = json_encode($data_prov, $flags);

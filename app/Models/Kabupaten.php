@@ -16,7 +16,26 @@ class Kabupaten extends Model
         'name',
         'code',
         'full_code',
+        'latitude',
+        'longitude',
     ];
+
+    protected $casts = [
+        'latitude' => 'float',
+        'longitude' => 'float',
+    ];
+
+    protected $appends = [
+        'timezone',
+    ];
+
+    /**
+     * Get timezone attribute inherited from parent province.
+     */
+    public function getTimezoneAttribute(): string
+    {
+        return $this->provinsi ? $this->provinsi->timezone : 'WIB';
+    }
 
     public function provinsi(): BelongsTo
     {

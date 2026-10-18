@@ -2,191 +2,305 @@
     {
         "id": 1,
         "name": "Aceh",
-        "code": "11"
+        "code": "11",
+        "latitude": 4.695135,
+        "longitude": 96.749399,
+        "timezone": "WIB"
     },
     {
         "id": 2,
         "name": "Bali",
-        "code": "51"
+        "code": "51",
+        "latitude": -8.409518,
+        "longitude": 115.188916,
+        "timezone": "WITA"
     },
     {
         "id": 3,
         "name": "Banten",
-        "code": "36"
+        "code": "36",
+        "latitude": -6.405817,
+        "longitude": 106.064018,
+        "timezone": "WIB"
     },
     {
         "id": 4,
         "name": "Bengkulu",
-        "code": "17"
+        "code": "17",
+        "latitude": -3.577847,
+        "longitude": 102.346388,
+        "timezone": "WIB"
     },
     {
         "id": 5,
         "name": "Daerah Istimewa Yogyakarta",
-        "code": "34"
+        "code": "34",
+        "latitude": -7.875385,
+        "longitude": 110.426209,
+        "timezone": "WIB"
     },
     {
         "id": 6,
         "name": "DKI Jakarta",
-        "code": "31"
+        "code": "31",
+        "latitude": -6.208763,
+        "longitude": 106.845599,
+        "timezone": "WIB"
     },
     {
         "id": 7,
         "name": "Gorontalo",
-        "code": "75"
+        "code": "75",
+        "latitude": 0.699937,
+        "longitude": 122.446724,
+        "timezone": "WITA"
     },
     {
         "id": 8,
         "name": "Jambi",
-        "code": "15"
+        "code": "15",
+        "latitude": -1.610123,
+        "longitude": 103.61312,
+        "timezone": "WIB"
     },
     {
         "id": 9,
         "name": "Jawa Barat",
-        "code": "32"
+        "code": "32",
+        "latitude": -6.917464,
+        "longitude": 107.619123,
+        "timezone": "WIB"
     },
     {
         "id": 10,
         "name": "Jawa Tengah",
-        "code": "33"
+        "code": "33",
+        "latitude": -7.150975,
+        "longitude": 110.140259,
+        "timezone": "WIB"
     },
     {
         "id": 11,
         "name": "Jawa Timur",
-        "code": "35"
+        "code": "35",
+        "latitude": -7.536064,
+        "longitude": 112.238402,
+        "timezone": "WIB"
     },
     {
         "id": 12,
         "name": "Kalimantan Barat",
-        "code": "61"
+        "code": "61",
+        "latitude": -0.278781,
+        "longitude": 111.475285,
+        "timezone": "WIB"
     },
     {
         "id": 13,
         "name": "Kalimantan Selatan",
-        "code": "63"
+        "code": "63",
+        "latitude": -3.092642,
+        "longitude": 115.283759,
+        "timezone": "WITA"
     },
     {
         "id": 14,
         "name": "Kalimantan Tengah",
-        "code": "62"
+        "code": "62",
+        "latitude": -1.681488,
+        "longitude": 113.382355,
+        "timezone": "WIB"
     },
     {
         "id": 15,
         "name": "Kalimantan Timur",
-        "code": "64"
+        "code": "64",
+        "latitude": 0.538659,
+        "longitude": 116.419389,
+        "timezone": "WITA"
     },
     {
         "id": 16,
         "name": "Kalimantan Utara",
-        "code": "65"
+        "code": "65",
+        "latitude": 3.073093,
+        "longitude": 116.041388,
+        "timezone": "WITA"
     },
     {
         "id": 17,
         "name": "Kepulauan Bangka Belitung",
-        "code": "19"
+        "code": "19",
+        "latitude": -2.741051,
+        "longitude": 106.440587,
+        "timezone": "WIB"
     },
     {
         "id": 18,
         "name": "Kepulauan Riau",
-        "code": "21"
+        "code": "21",
+        "latitude": 3.945651,
+        "longitude": 108.142867,
+        "timezone": "WIB"
     },
     {
         "id": 19,
         "name": "Lampung",
-        "code": "18"
+        "code": "18",
+        "latitude": -4.558585,
+        "longitude": 105.406808,
+        "timezone": "WIB"
     },
     {
         "id": 20,
         "name": "Maluku",
-        "code": "81"
+        "code": "81",
+        "latitude": -3.238462,
+        "longitude": 130.145273,
+        "timezone": "WIT"
     },
     {
         "id": 21,
         "name": "Maluku Utara",
-        "code": "82"
+        "code": "82",
+        "latitude": 1.570999,
+        "longitude": 127.808769,
+        "timezone": "WIT"
     },
     {
         "id": 22,
         "name": "Nusa Tenggara Barat",
-        "code": "52"
+        "code": "52",
+        "latitude": -8.652933,
+        "longitude": 117.361648,
+        "timezone": "WITA"
     },
     {
         "id": 23,
         "name": "Nusa Tenggara Timur",
-        "code": "53"
+        "code": "53",
+        "latitude": -8.657382,
+        "longitude": 121.079371,
+        "timezone": "WITA"
     },
     {
         "id": 24,
         "name": "Papua",
-        "code": "91"
+        "code": "91",
+        "latitude": -4.269928,
+        "longitude": 138.080353,
+        "timezone": "WIT"
     },
     {
         "id": 25,
         "name": "Papua Barat",
-        "code": "92"
+        "code": "92",
+        "latitude": -1.336115,
+        "longitude": 133.174716,
+        "timezone": "WIT"
     },
     {
         "id": 26,
         "name": "Papua Barat Daya",
-        "code": "96"
+        "code": "96",
+        "latitude": -0.8762,
+        "longitude": 131.2558,
+        "timezone": "WIT"
     },
     {
         "id": 27,
         "name": "Papua Pegunungan",
-        "code": "95"
+        "code": "95",
+        "latitude": -4.0954,
+        "longitude": 138.9442,
+        "timezone": "WIT"
     },
     {
         "id": 28,
         "name": "Papua Selatan",
-        "code": "93"
+        "code": "93",
+        "latitude": -8.4991,
+        "longitude": 140.4011,
+        "timezone": "WIT"
     },
     {
         "id": 29,
         "name": "Papua Tengah",
-        "code": "94"
+        "code": "94",
+        "latitude": -3.3667,
+        "longitude": 135.4833,
+        "timezone": "WIT"
     },
     {
         "id": 30,
         "name": "Riau",
-        "code": "14"
+        "code": "14",
+        "latitude": 0.293347,
+        "longitude": 101.706825,
+        "timezone": "WIB"
     },
     {
         "id": 31,
         "name": "Sulawesi Barat",
-        "code": "76"
+        "code": "76",
+        "latitude": -2.844137,
+        "longitude": 119.232078,
+        "timezone": "WITA"
     },
     {
         "id": 32,
         "name": "Sulawesi Selatan",
-        "code": "73"
+        "code": "73",
+        "latitude": -3.668799,
+        "longitude": 119.974053,
+        "timezone": "WITA"
     },
     {
         "id": 33,
         "name": "Sulawesi Tengah",
-        "code": "72"
+        "code": "72",
+        "latitude": -1.430025,
+        "longitude": 121.445618,
+        "timezone": "WITA"
     },
     {
         "id": 34,
         "name": "Sulawesi Tenggara",
-        "code": "74"
+        "code": "74",
+        "latitude": -4.14491,
+        "longitude": 122.174605,
+        "timezone": "WITA"
     },
     {
         "id": 35,
         "name": "Sulawesi Utara",
-        "code": "71"
+        "code": "71",
+        "latitude": 0.624693,
+        "longitude": 123.975002,
+        "timezone": "WITA"
     },
     {
         "id": 36,
         "name": "Sumatera Barat",
-        "code": "13"
+        "code": "13",
+        "latitude": -0.73994,
+        "longitude": 100.800005,
+        "timezone": "WIB"
     },
     {
         "id": 37,
         "name": "Sumatera Selatan",
-        "code": "16"
+        "code": "16",
+        "latitude": -3.319437,
+        "longitude": 104.91471,
+        "timezone": "WIB"
     },
     {
         "id": 38,
         "name": "Sumatera Utara",
-        "code": "12"
+        "code": "12",
+        "latitude": 2.115355,
+        "longitude": 99.545097,
+        "timezone": "WIB"
     }
 ]

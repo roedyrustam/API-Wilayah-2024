@@ -5,6 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.5.0] - 2026-10-18
+
+### Added
+- **Fitur GIS & Koordinat Centroid**: Menambahkan kolom `latitude` dan `longitude` ke tabel `provinsis`, `kabupatens`, `kecamatans`, dan `kelurahans` melalui migrasi database `2026_10_18_000001_add_coordinates_and_metadata_to_wilayah_tables.php`.
+- **Informasi Zona Waktu (WIB / WITA / WIT)**: Menambahkan field `timezone` pada model Provinsi dan Kabupaten dengan fallback kalkulasi otomatis berdasarkan kode resmi Kemendagri.
+- **Pencarian Proximity Geospatial (`GET /api/v1/nearby`)**: Endpoint pencarian wilayah administratif dalam radius kilometer tertentu dari koordinat GPS menggunakan formula Haversine dengan presisi tinggi dan optimasi bounding box.
+- **Developer Playground & Live Console (`/demo` & `/playground`)**: Antarmuka interaktif modern dengan Cascading Dropdown 4-level, generator kode integrasi instan (Fetch API, cURL), pencarian autocomplete real-time, dan penguji GPS radius.
+- **CLI Artisan Commands**:
+  - `php artisan wilayah:status`: Audit integritas master data 2026 dan status DOB 96 Papua Barat Daya dalam bentuk tabel ASCII.
+  - `php artisan wilayah:search {query}`: Pencarian instan wilayah 4-level langsung dari terminal shell.
+
 ## [2.0.0] - 2026-10-18
 
 ### Added

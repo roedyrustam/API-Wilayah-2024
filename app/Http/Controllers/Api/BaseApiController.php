@@ -31,6 +31,7 @@ class BaseApiController extends Controller
     {
         $response = [
             'success' => true,
+            'status'  => true,
             'message' => $message,
             'data'    => $result,
         ];
@@ -49,6 +50,7 @@ class BaseApiController extends Controller
     {
         $response = [
             'success' => false,
+            'status'  => false,
             'message' => $error,
         ];
 

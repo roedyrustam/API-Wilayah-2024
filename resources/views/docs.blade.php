@@ -88,6 +88,7 @@
             <p>Master Data 38 Provinsi, 514 Kab/Kota, 7.277 Kecamatan, 83.763 Kelurahan/Desa</p>
         </div>
         <nav class="header-links">
+            <a href="/demo" style="background: #0284c7; color: #ffffff; padding: 6px 14px; border-radius: 6px; text-decoration: none; font-weight: 600;">Live Playground</a>
             <a href="/admin">Filament Admin</a>
             <a href="/json/provinsi.json" target="_blank">JSON Provinsi</a>
             <a href="/json/kabupaten.json" target="_blank">JSON Kabupaten</a>

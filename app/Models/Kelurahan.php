@@ -16,7 +16,22 @@ class Kelurahan extends Model
         'name',
         'full_code',
         'pos_code',
+        'latitude',
+        'longitude',
     ];
+
+    protected $casts = [
+        'latitude' => 'float',
+        'longitude' => 'float',
+    ];
+
+    /**
+     * Get timezone attribute inherited from parent hierarchy.
+     */
+    public function getTimezoneAttribute(): string
+    {
+        return $this->kecamatan ? $this->kecamatan->timezone : 'WIB';
+    }
 
     public function kecamatan(): BelongsTo
     {

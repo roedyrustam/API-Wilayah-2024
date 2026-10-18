@@ -80,18 +80,19 @@
 
 ---
 
-## 📖 Dokumentasi REST API
+## 🎮 Live Playground & Dokumentasi REST API
 
-Akses dokumentasi interaktif Swagger UI di browser:  
-👉 **http://127.0.0.1:8000/api/documentation**
-
-Spesifikasi OpenAPI 3.1 YAML tersedia di: `public/docs/openapi.yaml`.
+- 🕹️ **Interactive Developer Playground & Cascading Dropdown**:  
+  👉 **http://127.0.0.1:8000/demo** (atau `/playground`)
+- 📖 **Dokumentasi Interaktif Swagger UI**:  
+  👉 **http://127.0.0.1:8000/api/documentation**
+- 📄 **Spesifikasi OpenAPI 3.1 YAML**: `public/docs/openapi.yaml`
 
 ### Ringkasan Endpoint
 
 | Method | Endpoint | Deskripsi | Parameter Query |
 |---|---|---|---|
-| `GET` | `/api/v1/provinsi` | Daftar seluruh provinsi | `search`, `code`, `paginate`, `per_page` |
+| `GET` | `/api/v1/provinsi` | Daftar seluruh provinsi (+ koordinat & zona waktu) | `search`, `code`, `paginate`, `per_page` |
 | `GET` | `/api/v1/provinsi/{id}` | Detail provinsi berdasarkan ID / Kode | - |
 | `GET` | `/api/v1/provinsi/{id}/kabupaten` | Kabupaten/Kota di provinsi tertentu | `search`, `type`, `paginate` |
 | `GET` | `/api/v1/kabupaten` | Daftar seluruh kabupaten/kota | `provinsi_id`, `search`, `full_code`, `type` |
@@ -103,9 +104,10 @@ Spesifikasi OpenAPI 3.1 YAML tersedia di: `public/docs/openapi.yaml`.
 | `GET` | `/api/v1/kelurahan` | Daftar seluruh kelurahan/desa | `kecamatan_id`, `search`, `pos_code`, `page` |
 | `GET` | `/api/v1/kelurahan/{id}` | Detail kelurahan/desa lengkap hierarki | - |
 | `GET` | `/api/v1/search` | **Autocomplete Global** (cari simultan 4 level wilayah) | `q` (minimal 2 karakter) |
+| `GET` | `/api/v1/nearby` | **Pencarian Proximity / Radius (GIS)** via Haversine | `lat`, `lng`, `radius` (km), `level`, `limit` |
 
 *Catatan:*
-- *Endpoint juga dapat diakses tanpa prefix `v1` (misal: `/api/provinsi`, `/api/search`).*
+- *Endpoint juga dapat diakses tanpa prefix `v1` (misal: `/api/provinsi`, `/api/search`, `/api/nearby`).*
 - *Dilengkapi **In-Memory Caching (TTL 24 jam)** untuk respons sub-5ms.*
 - *Dilengkapi **API Rate Limiter** 120 request/menit per alamat IP untuk mencegah abuse.*
 
@@ -114,18 +116,37 @@ Spesifikasi OpenAPI 3.1 YAML tersedia di: `public/docs/openapi.yaml`.
 ```json
 {
   "success": true,
+  "status": true,
   "message": "Daftar provinsi berhasil diambil",
   "data": [
     {
       "id": 26,
       "name": "Papua Barat Daya",
-      "code": "96"
+      "code": "96",
+      "latitude": -0.8762,
+      "longitude": 131.2558,
+      "timezone": "WIT"
     }
   ],
   "meta": {
     "total": 38
   }
 }
+```
+
+---
+
+## 🛠️ CLI Artisan Commands
+
+API Wilayah Indonesia 2026 dilengkapi perintah command-line khusus:
+
+```bash
+# Periksa status integritas dan kepatuhan standar Kemendagri 2026 (termasuk DOB 96)
+php artisan wilayah:status
+
+# Cari data wilayah secara instan langsung dari terminal shell
+php artisan wilayah:search Sorong
+php artisan wilayah:search 98415
 ```
 
 ---

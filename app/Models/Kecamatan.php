@@ -12,8 +12,25 @@ class Kecamatan extends Model
     use HasFactory;
     protected $fillable = [
         'kabupaten_id',
-        'name', 'code', 'full_code'
+        'name',
+        'code',
+        'full_code',
+        'latitude',
+        'longitude',
     ];
+
+    protected $casts = [
+        'latitude' => 'float',
+        'longitude' => 'float',
+    ];
+
+    /**
+     * Get timezone attribute inherited from parent kabupaten/provinsi.
+     */
+    public function getTimezoneAttribute(): string
+    {
+        return $this->kabupaten ? $this->kabupaten->timezone : 'WIB';
+    }
 
     public function kabupaten(): BelongsTo
     {
