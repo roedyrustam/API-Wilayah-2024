@@ -561,6 +561,7 @@
             <button class="tab-btn" onclick="switchTab('tab-search', this)">Global Autocomplete</button>
             <button class="tab-btn" onclick="switchTab('tab-nearby', this)">Nearby Radius (GPS)</button>
             <button class="tab-btn" onclick="switchTab('tab-geojson', this)">GeoJSON RFC 7946</button>
+            <button class="tab-btn" onclick="switchTab('tab-kodepos-cascader', this)">Kode Pos & Cascader (v3.3)</button>
             <button class="tab-btn" onclick="switchTab('tab-export-sdk', this)">Export & Client SDK</button>
         </div>
 
@@ -874,6 +875,65 @@
             </div>
         </section>
 
+        <!-- TAB 6: KODE POS & SINGLE-TRIP CASCADER -->
+        <section id="tab-kodepos-cascader" class="tab-panel">
+            <div class="grid-2">
+                <!-- Postal Code Lookup Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Lookup Kode Pos 5-Digit</h3>
+                        <span class="badge" style="background:rgba(16,185,129,0.2); color:#34d399;">GET /api/v1/kodepos/{code}</span>
+                    </div>
+                    <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">
+                        Masukkan 5 digit kode pos resmi Indonesia untuk mengambil hierarki lengkap (Kelurahan, Kecamatan, Kab/Kota, Provinsi, dan Zona Waktu) secara instan.
+                    </p>
+                    <div class="form-group">
+                        <label class="form-label">Kode Pos (5 Digit)</label>
+                        <div style="display:flex; gap:8px;">
+                            <input type="text" id="demo-pos-input" class="form-select" placeholder="Contoh: 10110 atau 98547" value="10110" style="flex:1;">
+                            <button type="button" class="btn-primary" onclick="lookupKodePos()">Cari Kode Pos</button>
+                        </div>
+                    </div>
+                    <div style="margin-top:12px; display:flex; gap:6px; flex-wrap:wrap;">
+                        <span style="font-size:11px; color:var(--text-muted); align-self:center;">Contoh Cepat:</span>
+                        <button type="button" class="btn-copy" onclick="quickPostal('10110')">10110 (Gambir)</button>
+                        <button type="button" class="btn-copy" onclick="quickPostal('40115')">40115 (Bandung)</button>
+                        <button type="button" class="btn-copy" onclick="quickPostal('60271')">60271 (Surabaya)</button>
+                        <button type="button" class="btn-copy" onclick="quickPostal('98547')">98547 (Papua)</button>
+                    </div>
+                    <div id="postal-result-container" style="margin-top:20px;">
+                        <!-- Results will appear here -->
+                    </div>
+                </div>
+
+                <!-- Single-Trip Cascader Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Single-Trip Cascader Hierarki</h3>
+                        <span class="badge" style="background:rgba(56,189,248,0.2); color:#38bdf8;">1 Network Trip</span>
+                    </div>
+                    <p style="font-size:13px; color:var(--text-muted); margin-bottom:16px;">
+                        Ambil seluruh cabang anak Provinsi (hingga Kecamatan) dalam satu kali request jaringan untuk dropdown frontend berperforma tinggi.
+                    </p>
+                    <div class="form-group">
+                        <label class="form-label">Pilih Provinsi untuk Cascader</label>
+                        <div style="display:flex; gap:8px;">
+                            <select id="cascader-prov-id" class="form-select" style="flex:1;"></select>
+                            <button type="button" class="btn-primary" onclick="loadCascaderTree()">Muat Pohon</button>
+                        </div>
+                    </div>
+                    <div id="cascader-benchmark" style="font-size:12px; color:var(--cyan); margin-top:8px; display:none;"></div>
+                    <div style="margin-top:16px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                            <span style="font-size:12px; font-weight:600; color:var(--text-muted);">Pohon Hierarki JSON</span>
+                            <button type="button" class="btn-copy" onclick="copyCascaderJson()">Salin JSON</button>
+                        </div>
+                        <div class="code-box" id="cascader-output" style="max-height:300px; font-size:12px;">// Klik tombol "Muat Pohon" untuk menguji hierarki cascader</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Footer -->
         <footer style="margin-top: 60px; padding: 32px 20px; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 13.5px;">
             <p>&copy; 2024&ndash;2026 <strong>Roedy Rustam</strong>. Dibuat dengan standar resmi Kemendagri Republik Indonesia.</p>
@@ -928,6 +988,14 @@
                             optGeo.value = p.id;
                             optGeo.textContent = `${p.name} (${p.code})`;
                             geoSel.appendChild(optGeo);
+                        }
+
+                        const cascSel = document.getElementById('cascader-prov-id');
+                        if (cascSel) {
+                            const optCasc = document.createElement('option');
+                            optCasc.value = p.id;
+                            optCasc.textContent = `${p.name} (${p.code})`;
+                            cascSel.appendChild(optCasc);
                         }
                     });
                 }
