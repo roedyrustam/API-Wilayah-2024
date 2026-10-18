@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.2.0] - 2026-10-18
+
+### Added
+- **Zero-Friction Vercel Serverless Deployment**: Menambahkan serverless function bridge di [`api/index.php`](file:///c:/apiwilayah2027/API-Wilayah-2024/api/index.php), penanganan direktori writable otomatis di `/tmp/storage` (AWS Lambda), dan panduan lengkap [`DEPLOY_VERCEL.md`](file:///c:/apiwilayah2027/API-Wilayah-2024/DEPLOY_VERCEL.md).
+- **Bundled Pre-Seeded SQLite Database**: Menyertakan database lokal SQLite lengkap (38 provinsi, 514 kab/kota, 7.277 kec, 83.763 kelurahan/desa) di `database/database.sqlite` (8 MB) yang langsung disalin ke `/tmp/database.sqlite` saat inisialisasi cold-start tanpa membutuhkan server database eksternal berbayar.
+- **OpenAPI Native JSON Specification**: Mengompilasi [`public/docs/openapi.json`](file:///c:/apiwilayah2027/API-Wilayah-2024/public/docs/openapi.json) untuk parsing instan Swagger UI dan memperbaiki seluruh unquoted colons pada [`public/docs/openapi.yaml`](file:///c:/apiwilayah2027/API-Wilayah-2024/public/docs/openapi.yaml) (OpenAPI 3.0.3).
+- **Global CORS & Edge CDN Caching**: Konfigurasi header `Access-Control-Allow-Origin: *` dan `Cache-Control` s-maxage pada [`vercel.json`](file:///c:/apiwilayah2027/API-Wilayah-2024/vercel.json) untuk akses cross-origin instan dari aplikasi web, SPA, dan mobile.
+- **Atribusi Author & Standarisasi Packagist**: Menyelaraskan lisensi, composer strict validation, docblock backend, dan author Roedy Rustam pada 32 file di seluruh repositori.
+
 ## [3.1.0] - 2026-10-18
 
 ### Added
