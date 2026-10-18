@@ -45,5 +45,9 @@ if (file_exists($sqliteSource) && !file_exists($sqliteTarget)) {
     @copy($sqliteSource, $sqliteTarget);
 }
 
-// 4. Forward execution to Laravel's public entrypoint
+// 4. Normalize SCRIPT_NAME and SCRIPT_FILENAME so Symfony's Request doesn't strip '/api' prefix from URLs
+$_SERVER['SCRIPT_NAME'] = '/index.php';
+$_SERVER['SCRIPT_FILENAME'] = dirname(__DIR__) . '/public/index.php';
+
+// 5. Forward execution to Laravel's public entrypoint
 require __DIR__ . '/../public/index.php';
